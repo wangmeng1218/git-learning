@@ -167,11 +167,6 @@ export default {
       operatorArr: []
     }
   },
-  provide () {
-    return {
-      testProvideAndInject: this.testProvideAndInject
-    }
-  },
   watch: {
     typeObj: {
       deep: true,
@@ -183,7 +178,6 @@ export default {
   computed: {
   },
   mounted () {
-    console.log('父组件mounted')
   },
   created () {
     this.riskEvaluateData.forEach(item => {
@@ -206,22 +200,16 @@ export default {
         }
         this.operatorArr.push(obj)
       }
-      console.log(leftPart + 'RPN' + rightPart)
     })
   },
   methods: {
-    testProvideAndInject () {
-      console.log('测试Provide与Inject使用')
-    },
     riskPriorityChanged () {
-      console.log(this.$refs.ppp)
       let value = 1
       Object.keys(this.typeObj).forEach(item => {
         value *= this.typeObj[item]
       })
       this.RPNValue = value
       this.operatorArr.forEach((operator, index) => {
-        console.log(operator)
         if (eval(operator.leftPart + value) && eval(value + operator.rightPart)) {
           this.riskPriority = index
         }

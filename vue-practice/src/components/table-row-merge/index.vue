@@ -11,12 +11,8 @@
 </template>
 
 <script>
-// 测试混入mixin使用
-import mixin from '../../mixins/mixin'
 export default {
   name: 'table-row-merge',
-  mixins: [mixin],
-  inject: ['testProvideAndInject'],
   props: {
     // 表格数据
     tableData: {
@@ -35,12 +31,6 @@ export default {
     }
   },
   mounted () {
-    console.log('子组件mounted')
-    console.log(this.$slots)
-    this.testMixin()
-    this.testProvideAndInject()
-    console.log(this.$parent)
-    console.log(this.$Utils.isEmail('2687804440@qq.com'))
   },
   data () {
     return {
@@ -52,7 +42,6 @@ export default {
       immediate: true,
       deep: true,
       handler () {
-        console.log(this.$attrs)
         this.tableDataSorted = this.dealWithTableData(this.tableDataSorted, this.mergeAttr)
       }
     }
@@ -70,7 +59,6 @@ export default {
           classifyObj[element[attr]].push(element)
         }
       })
-      console.log(classifyObj)
       Object.keys(classifyObj).forEach(classifyAttr => {
         let length = classifyObj[classifyAttr].length
         classifyObj[classifyAttr].forEach((item, index) => {
@@ -84,7 +72,6 @@ export default {
           }
         })
       })
-      console.log(typeObj)
       this.$emit('input', typeObj)
       return resultArr
     },
