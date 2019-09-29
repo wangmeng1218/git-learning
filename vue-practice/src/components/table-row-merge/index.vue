@@ -40,6 +40,7 @@ export default {
     this.testMixin()
     this.testProvideAndInject()
     console.log(this.$parent)
+    console.log(this.$Utils.isEmail('2687804440@qq.com'))
   },
   data () {
     return {

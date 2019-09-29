@@ -5,9 +5,11 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import App from './App'
 import router from './router'
+import Utils from './utils/utils'
 import customizeComponent from './components'
 Vue.config.productionTip = false
 
+Vue.prototype.$Utils = Utils
 // 全局使用ElementUI
 Vue.use(ElementUI)
 Vue.use(customizeComponent)
