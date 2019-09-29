@@ -5,6 +5,8 @@
 ## Build Setup
 ### element-table 饿了么表格组件封装使用示例
 #### table-row-merge-show 合并指定属性行
+
+### render-test 渲染函数使用练习
 ``` bash
 # install dependencies
 npm install
