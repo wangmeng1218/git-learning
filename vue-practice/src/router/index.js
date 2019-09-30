@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 // import HelloWorld from '@/components/HelloWorld'
 import TableRowMerge from '@/view/element-table/table-row-merge-show'
-import RenderTest from '@/view/render-test/index'
 import RenderLearning from '@/view/render-test/render-learning'
 import AlertTest from '@/view/element-component-test/alertTest'
 import HomePage from '@/view/home-page'
@@ -20,11 +19,6 @@ export default new Router({
           path: '/table-row-merge',
           name: 'TableRowMerge',
           component: TableRowMerge
-        },
-        {
-          path: '/render-test',
-          name: 'RenderTest',
-          component: RenderTest
         },
         {
           path: '/render-learning',
