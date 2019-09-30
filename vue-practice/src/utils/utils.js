@@ -1,12 +1,11 @@
-/* eslint-disable */
 // 利用Set中没有重复元素的特性，为数组和字符串去重
 const removal = function(val){
   if(Object.prototype.toString.call(val) === '[object String]'){
-    return [...new Set(val)].join('')
+    return [...new Set(val)].join('');
   }else if(Object.prototype.toString.call(val) === '[object Array]'){
-    return [...new Set(val)]
+    return [...new Set(val)];
   }
-}
+};
 
 /**
  *
@@ -21,25 +20,25 @@ const removal = function(val){
  *
  **/
 const dealWithTableData  = function(data, attr) {
-  let typeArr = []
-  let dataArr = []
+  let typeArr = [];
+  let dataArr = [];
   data.forEach(element => {
     if (typeArr.indexOf(element[attr]) === -1) {
-      typeArr.push(element[attr])
+      typeArr.push(element[attr]);
       dataArr.push({
         [attr]: element[attr],
         allData: [element]
-      })
+      });
     } else {
       dataArr.forEach(value => {
         if (value[attr] === element[attr]) {
-          value.allData.push(element)
+          value.allData.push(element);
         }
       })
     }
-  })
-  return resultArr
-}
+  });
+  return resultArr;
+};
 
 
 /**
@@ -50,24 +49,24 @@ const dealWithTableData  = function(data, attr) {
  * @param  {*} opts
  */
 const triggerEvent = function(elm, name, ...opts) {
-  let eventName
+  let eventName;
 
   if (/^mouse|click/.test(name)) {
-    eventName = 'MouseEvents'
+    eventName = 'MouseEvents';
   } else if (/^key/.test(name)) {
-    eventName = 'KeyboardEvent'
+    eventName = 'KeyboardEvent';
   } else {
-    eventName = 'HTMLEvents'
+    eventName = 'HTMLEvents';
   }
-  const evt = document.createEvent(eventName)
+  const evt = document.createEvent(eventName);
 
-  evt.initEvent(name, ...opts)
+  evt.initEvent(name, ...opts);
   elm.dispatchEvent
     ? elm.dispatchEvent(evt)
-    : elm.fireEvent('on' + name, evt)
+    : elm.fireEvent('on' + name, evt);
 
-  return elm
-}
+  return elm;
+};
 
 /**
  * 触发 “mouseup” 和 “mousedown” 事件
@@ -75,11 +74,11 @@ const triggerEvent = function(elm, name, ...opts) {
  * @param {*} opts
  */
 const triggerClick = function(elm, ...opts) {
-  triggerEvent(elm, 'mousedown', ...opts)
-  triggerEvent(elm, 'mouseup', ...opts)
+  triggerEvent(elm, 'mousedown', ...opts);
+  triggerEvent(elm, 'mouseup', ...opts);
 
   return elm
-}
+};
 
 /**
  * 触发 keydown 事件
@@ -87,11 +86,11 @@ const triggerClick = function(elm, ...opts) {
  * @param {keyCode} int
  */
 const triggerKeyDown = function(el, keyCode) {
-  const evt = document.createEvent('Events')
-  evt.initEvent('keydown', true, true)
-  evt.keyCode = keyCode
+  const evt = document.createEvent('Events');
+  evt.initEvent('keydown', true, true);
+  evt.keyCode = keyCode;
   el.dispatchEvent(evt)
-}
+};
 
 /**
  *
@@ -100,21 +99,21 @@ const triggerKeyDown = function(el, keyCode) {
  * @return {String}
  */
 const formatRemainTime = function(endTime) {
-  let startDate = new Date() // 开始时间
-  let endDate = new Date(endTime) // 结束时间
-  let t = endDate.getTime() - startDate.getTime() // 时间差
+  let startDate = new Date(); // 开始时间
+  let endDate = new Date(endTime); // 结束时间
+  let t = endDate.getTime() - startDate.getTime(); // 时间差
   let d = 0,
     h = 0,
     m = 0,
     s = 0;
   if (t >= 0) {
-    d = Math.floor(t / 1000 / 3600 / 24)
-    h = Math.floor(t / 1000 / 60 / 60 % 24)
-    m = Math.floor(t / 1000 / 60 % 60)
-    s = Math.floor(t / 1000 % 60)
+    d = Math.floor(t / 1000 / 3600 / 24);
+    h = Math.floor(t / 1000 / 60 / 60 % 24);
+    m = Math.floor(t / 1000 / 60 % 60);
+    s = Math.floor(t / 1000 % 60);
   }
-  return d + "天 " + h + "小时 " + m + "分钟 " + s + "秒"
-}
+  return d + "天 " + h + "小时 " + m + "分钟 " + s + "秒";
+};
 
 /**
  *
@@ -128,14 +127,14 @@ const formatPassTime = function(startTime){
     hour = parseInt(time / (1000 * 60 * 60)),
     min = parseInt(time / (1000 * 60)),
     month = parseInt(day / 30),
-    year = parseInt(month / 12)
-  if (year) return year + "年前"
-  if (month) return month + "个月前"
-  if (day) return day + "天前"
-  if (hour) return hour + "小时前"
-  if (min) return min + "分钟前"
-  else return '刚刚'
-}
+    year = parseInt(month / 12);
+  if (year) return year + "年前";
+  if (month) return month + "个月前";
+  if (day) return day + "天前";
+  if (hour) return hour + "小时前";
+  if (min) return min + "分钟前";
+  else return '刚刚';
+};
 
 /**
  *判断对象是否为空
@@ -149,10 +148,10 @@ const formatPassTime = function(startTime){
  */
 const isEmptyObject = function(obj){
   if(!obj || typeof obj !== 'object' || Array.isArray(obj)){
-    return false
+    return false;
   }
-  return !Object.keys(obj).length
-}
+  return !Object.keys(obj).length;
+};
 
 /**
  *
@@ -163,15 +162,15 @@ const isEmptyObject = function(obj){
  *
  */
 const arrStrictEqual = (arr1, arr2) => {
-  if (arr1 === arr2) return true
-  if (arr1.length !== arr2.length) return false
+  if (arr1 === arr2) return true;
+  if (arr1.length !== arr2.length) return false;
   for (let i = 0; i < arr1.length; ++i) {
     if(arr1[i] !== arr2[i]) {
-      return false
+      return false;
     }
   }
-  return true
-}
+  return true;
+};
 
 /**
  *
@@ -182,48 +181,48 @@ const arrStrictEqual = (arr1, arr2) => {
  *
  */
 const arrEqual = (arr1, arr2) => {
-  if (arr1 === arr2) return true
-  if (arr1.length !== arr2.length) return false
+  if (arr1 === arr2) return true;
+  if (arr1.length !== arr2.length) return false;
   for (let i = 0; i < arr1.length; ++i) {
     if(arr2.indexOf(arr1[i]) === -1) {
-      return false
+      return false;
     }
   }
-  return true
-}
+  return true;
+};
 
 /**
  * @desc 深拷贝，支持常见类型,支持数组和对象的嵌套
  * @param {Any} values
  */
 const deepClone = function(values){
-  let copy
+  let copy;
   // 处理简单数据类型和null/undefined
-  if (values == null || typeof values !== 'object') return values
+  if (values == null || typeof values !== 'object') return values;
   // 处理日期数据
   if (values instanceof Date) {
-    copy = new Date()
-    copy.setTime(values.getTime())
-    return copy
+    copy = new Date();
+    copy.setTime(values.getTime());
+    return copy;
   }
   // 处理数组
   if (values instanceof Array) {
-    copy = []
+    copy = [];
     for (let i = 0, len = values.length; i < len; i++) {
       copy[i] = deepClone(values[i])
     }
-    return copy
+    return copy;
   }
   // 处理对象
   if (values instanceof Object) {
-    copy = {}
+    copy = {};
     for (let attr in values) {
       if (values.hasOwnProperty(attr)) copy[attr] = deepClone(values[attr])
     }
-    return copy
+    return copy;
   }
-  throw new Error("Unable to copy values!Its type isn't supported.")
-}
+  throw new Error("Unable to copy values!Its type isn't supported.");
+};
 
 /**
  *
@@ -235,16 +234,16 @@ const deepClone = function(values){
  *
  */
 const randomNum = function(min,max){
-  return Math.floor(min + Math.random() * (max - min))
-}
+  return Math.floor(min + Math.random() * (max - min));
+};
 
 /**
  *判断是否为邮箱地址
  *
  */
 const isEmail = function(str){
-  return /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(str)
-}
+  return /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(str);
+};
 
 /**
  *
@@ -253,7 +252,7 @@ const isEmail = function(str){
  */
 const isIdCard = function(str){
   return /^(^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$)|(^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])((\d{4})|\d{3}[Xx])$)$/.test(str)
-}
+};
 
 /**
  *
@@ -261,8 +260,8 @@ const isIdCard = function(str){
  *
  */
 const isPhoneNum = function(str){
-  return /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/.test(str)
-}
+  return /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/.test(str);
+};
 
 /**
  *
@@ -270,8 +269,8 @@ const isPhoneNum = function(str){
  *
  */
 const isUrl = function(str){
-  return /[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&// =]*)/i.test(str)
-}
+  return /[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&// =]*)/i.test(str);
+};
 
 const addDelUpdateClassify = function (initialData, endData) {
   /*描述：一组数据，进行增删改操作后，将增加的数据放入addArr中，将删除的数据放到deleteArr中
@@ -288,39 +287,39 @@ const addDelUpdateClassify = function (initialData, endData) {
   // 找不到则意味着这条数据在旧数据中没有，是新添加的，放到addArr中
   endData.forEach(end => {
     let flag = initialData.find(init => {
-      return end.code === init.code
-    })
+      return end.code === init.code;
+    });
     if (flag) {
       // 将数据转换为字符串进行比较，如果不同则表示数据变化了，放入updateArr中；
       // 这一步根据需求可以省略，直接放入updateArr中也可以
       initialData.forEach(init => {
         if (end.code === init.code){
           if (JSON.stringify(end) !== JSON.stringify(init)) {
-            updateArr.push(end)
+            updateArr.push(end);
           }
         }
       })
     } else {
-      addArr.push(end)
+      addArr.push(end);
     }
-  })
+  });
 // 遍历旧数据，在新数据中找旧数据中的每条数据
 // 找到则表示这条数据在新旧中都有，上面的操作中已经将这样的数据放入到updateArr中了，所以不需要再次执行
 // 找不到则表示，这条数据在旧数据中存在，但在新数据中不存在，所以是被删除的数据，放入deleteArr中
   initialData.forEach(init => {
     let flag = endData.find(end => {
-      return init.code === end.code
-    })
+      return init.code === end.code;
+    });
     if (!flag) {
-      deleteArr.push(init)
+      deleteArr.push(init);
     }
-  })
+  });
   return {
     addArr: addArr,
     deleteArr: deleteArr,
     updateArr: updateArr
   }
-}
+};
 
 export default {
   removal, // 简单数组与字符串去重
@@ -340,4 +339,4 @@ export default {
   isPhoneNum, // 判断是否为手机号
   isUrl, // 判断是否为URL地址
   addDelUpdateClassify  // 增删改数据分类
-}
+};

@@ -22,8 +22,8 @@
     created(){
     },
     mounted(){
-      this.level = 1
-      console.log(this.$refs)
+      this.level = 1;
+      console.log(this.$refs);
     },
     methods: {
     }

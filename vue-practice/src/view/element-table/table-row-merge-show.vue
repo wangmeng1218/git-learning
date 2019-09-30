@@ -176,7 +176,7 @@ export default {
     typeObj: {
       deep: true,
       handler: function () {
-        this.riskPriorityChanged()
+        this.riskPriorityChanged();
       }
     }
   },
@@ -187,23 +187,23 @@ export default {
   },
   created () {
     this.riskEvaluateData.forEach(item => {
-      let rightPart = ''
-      let leftPart = ''
-      let hasOperator = false
+      let rightPart = '';
+      let leftPart = '';
+      let hasOperator = false;
       if (item.rightValue && item.rightOperator) {
-        rightPart = item.rightOperator + item.rightValue
-        hasOperator = true
+        rightPart = item.rightOperator + item.rightValue;
+        hasOperator = true;
       }
       if (item.leftValue && item.leftValue) {
-        leftPart = item.leftValue + item.leftOperator
-        hasOperator = true
+        leftPart = item.leftValue + item.leftOperator;
+        hasOperator = true;
       }
       if (hasOperator) {
-        item.rowTitle = leftPart + 'RPN' + rightPart
+        item.rowTitle = leftPart + 'RPN' + rightPart;
         let obj = {
           leftPart: leftPart,
           rightPart: rightPart
-        }
+        };
         this.operatorArr.push(obj)
       }
       console.log(leftPart + 'RPN' + rightPart)
@@ -214,32 +214,36 @@ export default {
       console.log('测试Provide与Inject使用')
     },
     riskPriorityChanged () {
+<<<<<<< HEAD
       console.log(this.$refs.ppp)
       let value = 1
+=======
+      let value = 1;
+>>>>>>> 969d2cc... 去除eslint校验，语句结尾添加;
       Object.keys(this.typeObj).forEach(item => {
-        value *= this.typeObj[item]
-      })
-      this.RPNValue = value
+        value *= this.typeObj[item];
+      });
+      this.RPNValue = value;
       this.operatorArr.forEach((operator, index) => {
         console.log(operator)
         if (eval(operator.leftPart + value) && eval(value + operator.rightPart)) {
-          this.riskPriority = index
+          this.riskPriority = index;
         }
       })
     },
     arraySpanMethod ({ row, column, rowIndex, columnIndex }) {
       if (columnIndex === 1) {
         if (rowIndex === 0) {
-          return [3, 1]
+          return [3, 1];
         } else if (rowIndex === 1 || rowIndex === 2) {
-          return [0, 0]
+          return [0, 0];
         }
       }
       if (rowIndex === 3 || rowIndex === 4) {
         if (columnIndex === 1) {
-          return [1, 3]
+          return [1, 3];
         } else if (columnIndex === 2 || columnIndex === 3) {
-          return [0, 0]
+          return [0, 0];
         }
       }
     }
