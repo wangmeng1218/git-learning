@@ -321,6 +321,89 @@ const addDelUpdateClassify = function (initialData, endData) {
   }
 };
 
+// 判断是否是字符串
+const isString = function(val){
+  return Object.prototype.toString.call(val).slice(8,-1) === 'String';
+};
+
+// 判断是否是数字
+const isNumber = function (val) {
+  return Object.prototype.toString.call(o).slice(8, -1) === 'Number';
+};
+
+//  判断是否是boolean
+const isBoolean = function (val) {
+  return Object.prototype.toString.call(o).slice(8, -1) === 'Boolean';
+};
+
+// 判断是否是函数
+const isFunction = function (val) {
+  return Object.prototype.toString.call(o).slice(8, -1) === 'Function';
+};
+
+// 判断是否为null
+const isNull = function (val) {
+  return Object.prototype.toString.call(val).slice(8, -1) === 'Null';
+};
+
+// 判断是否是undefined
+const isUndefined = function(val) {
+  return Object.prototype.toString.call(val).slice(8, -1) === 'Undefined';
+};
+
+// 判断是否是对象
+const isObj = function(val) {
+  return Object.prototype.toString.call(val).slice(8, -1) === 'Object';
+};
+
+// 判断是否是数组
+const isArray = function (val) {
+  return Object.prototype.toString.call(val).slice(8, -1) === 'Array';
+};
+
+// 判断是否是时间
+const isDate = function (val) {
+  return Object.prototype.toString.call(val).slice(8, -1) === 'Date';
+};
+
+// 判断是否是正则
+const isRegExp = function (val) {
+  return Object.prototype.toString.call(val).slice(8, -1) === 'RegExp';
+};
+
+// 判断是否是错误对象
+const isError = function (val) {
+  return Object.prototype.toString.call(val).slice(8, -1) === 'Error';
+};
+
+// 判断是否是Symbol函数
+const isSymbol = function (val) {
+  return Object.prototype.toString.call(val).slice(8, -1) === 'Symbol';
+};
+
+// 判断是否是Promise对象
+const isPromise = function (val) {
+  return Object.prototype.toString.call(val).slice(8, -1) === 'Promise';
+};
+
+// 判断是否是Set对象
+const isSet = function (val) {
+  return Object.prototype.toString.call(val).slice(8, -1) === 'Set';
+};
+
+// 判断是否是false,包括字符串格式的null,undefined,false,NaN
+const isFalse = function (val) {
+  if(!val || val === 'null' || val === 'undefined' || val === 'false' || val === 'NaN') {
+    return true;
+  }
+  return false
+};
+
+// 判断是否是true
+const isTrue = function (val) {
+  return !this.isFalse(val);
+};
+
 export default {
   removal, // 简单数组与字符串去重
   dealWithTableData, // 根据属性对对象数组分类
@@ -338,5 +421,21 @@ export default {
   isIdCard, // 判断是否为身份证号
   isPhoneNum, // 判断是否为手机号
   isUrl, // 判断是否为URL地址
-  addDelUpdateClassify  // 增删改数据分类
+  addDelUpdateClassify,  // 增删改数据分类,
+  isString, // 判断是否是字符串
+  isNumber, // 判断是否是数字
+  isBoolean, // 判断是否是boolean
+  isFunction, // 判断是否是函数
+  isNull, //判读是否为null
+  isUndefined, //判断是否是undefined
+  isObj, // 判断是否是对象
+  isArray, // 判断是否是数组
+  isDate, // 判断是否是时间
+  isRegExp, // 判断是否是正则
+  isError, // 判断是否是错误对象
+  isSymbol, // 判断是否是Symbol函数
+  isPromise, // 判断是否是Promise对象
+  isSet, // 判断是否是Set对象
+  isFalse, // 判断是否是false,包括字符串格式的null,undefined,false,NaN
+  isTrue, // 判断是否是true
 };
