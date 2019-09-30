@@ -214,12 +214,8 @@ export default {
       console.log('测试Provide与Inject使用')
     },
     riskPriorityChanged () {
-<<<<<<< HEAD
       console.log(this.$refs.ppp)
-      let value = 1
-=======
       let value = 1;
->>>>>>> 969d2cc... 去除eslint校验，语句结尾添加;
       Object.keys(this.typeObj).forEach(item => {
         value *= this.typeObj[item];
       });
