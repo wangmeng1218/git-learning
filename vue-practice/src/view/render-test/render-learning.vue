@@ -70,10 +70,10 @@
     computed: {},
     watch: {},
     render: function (h) {
-      let tableList = this.getTables(h)
-      let timeLine = this.getTimeLine(h)
-      let refreshBtn = this.getRefreshBtn(h)
-      let backBtn = this.getBackBtn(h)
+      let tableList = this.getTables(h);
+      let timeLine = this.getTimeLine(h);
+      let refreshBtn = this.getRefreshBtn(h);
+      let backBtn = this.getBackBtn(h);
       return h(
         'div',
         [
@@ -114,25 +114,25 @@
     mounted () {
       this.$nextTick(() => {
         // 正文总高度
-        let scrollHeight = document.getElementById('pageContainer').scrollHeight
-        this.tableHeightArr = []
+        let scrollHeight = document.getElementById('pageContainer').scrollHeight;
+        this.tableHeightArr = [];
         this.lineData.forEach((data, index) => {
-          let childrenInfoArr = []
+          let childrenInfoArr = [];
           data.children.forEach((children, subIndex) => {
             let heightObj = {
               id: children.id,
               heightRate: index === 0 && subIndex === 0 ? 0 : document.getElementById(children.id).offsetTop / scrollHeight
-            }
-            childrenInfoArr.push(heightObj)
-          })
-          console.log(childrenInfoArr)
+            };
+            childrenInfoArr.push(heightObj);
+          });
+          console.log(childrenInfoArr);
           let heightObj = {
             id: data.id,
             heightRate: index === 0 ? 0 : document.getElementById(data.id).offsetTop / scrollHeight,
             children: childrenInfoArr
-          }
-          this.tableHeightArr.push(heightObj)
-        })
+          };
+          this.tableHeightArr.push(heightObj);
+        });
         this.throttledScrollHandler = throttle(300, this.dynamicHeight);
         // 监听容器滚动条滚动事件,点击时间轴通过srollTop定位时，也会触发，时间轴高亮元素闪烁出错
         // document.getElementById('pageContainer').onscroll = this.dynamicHeight;
@@ -148,29 +148,29 @@
         // console.log(event)
         this.$nextTick(() => {
           // 可滚动高度
-          let heightCanScroll = document.getElementById('pageContainer').scrollHeight - document.getElementById('pageContainer').clientHeight
+          let heightCanScroll = document.getElementById('pageContainer').scrollHeight - document.getElementById('pageContainer').clientHeight;
           // 已经滚动的距离
-          let heightHadScroll = document.getElementById('pageContainer').scrollTop
+          let heightHadScroll = document.getElementById('pageContainer').scrollTop;
           // 占比
-          let scrollRate = heightHadScroll / heightCanScroll
+          let scrollRate = heightHadScroll / heightCanScroll;
           this.tableHeightArr.forEach((value, index) => {
             if (scrollRate >= value.heightRate) {
               if (index < this.tableHeightArr.length - 1) {
                 if (scrollRate < this.tableHeightArr[index + 1].heightRate) {
-                  this.activeIndex = index
+                  this.activeIndex = index;
                 }
               } else {
-                this.activeIndex = index
+                this.activeIndex = index;
               }
             }
             value.children.forEach((children, subIndex) => {
               if (scrollRate >= children.heightRate) {
                 if (index < value.children.length - 1) {
                   if (scrollRate < value.children[subIndex + 1].heightRate) {
-                    this.subIndex = subIndex
+                    this.subIndex = subIndex;
                   }
                 } else {
-                  this.subIndex = subIndex
+                  this.subIndex = subIndex;
                 }
               }
             })
@@ -179,11 +179,11 @@
         })
       },
       getTables (h) {
-        let tableList = []
+        let tableList = [];
         this.lineData.forEach((data,index) => {
-          let childrenArr = []
+          let childrenArr = [];
           if (typeof data.children !== 'undefined' && data.children.length !== 0) {
-            childrenArr = this.getChildrenTables(h, data.children)
+            childrenArr = this.getChildrenTables(h, data.children);
           }
           let ele = h(
             'div',
@@ -200,12 +200,12 @@
               ...childrenArr
             ]
           )
-          tableList.push(ele)
+          tableList.push(ele);
         })
-        return tableList
+        return tableList;
       },
       getChildrenTables (h, data) {
-        let tableArr = []
+        let tableArr = [];
         data.forEach((value, index) => {
           let ele = h(
             'div',
@@ -218,10 +218,10 @@
                 style: 'width: 90%;background-color:green;margin-bottom: 10px;'
               }
             }
-          )
-          tableArr.push(ele)
-        })
-        return tableArr
+          );
+          tableArr.push(ele);
+        });
+        return tableArr;
       },
       getTimeLine (h) {
         return h(
@@ -234,7 +234,7 @@
             },
             on: {
               click: (id) => {
-                this.anchorLocation(id)
+                this.anchorLocation(id);
               }
             }
           }
@@ -283,12 +283,12 @@
       },
       anchorLocation (id) {
         // console.log(id)
-        let offsetTop = document.getElementById(id).offsetTop
+        let offsetTop = document.getElementById(id).offsetTop;
         if (offsetTop === 20) {
-          offsetTop = 10
+          offsetTop = 10;
         }
         this.$nextTick(() => {
-          document.getElementById('pageContainer').scrollTop = offsetTop - 10
+          document.getElementById('pageContainer').scrollTop = offsetTop - 10;
           // document.getElementById('pageContainer').addEventListener('scroll', this.dynamicHeight)
           // console.log(document.getElementById('pageContainer').scrollTop)
         })
