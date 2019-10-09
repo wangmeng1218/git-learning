@@ -10,7 +10,15 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+     /* 'http://localhost:8080/': {
+        target: 'http://libs.baidu.com/jquery/1.9.1/jquery.min.js',
+        changeOrigin: true,
+        pathRewrite: {
+          'http://localhost:8080/': 'http://libs.baidu.com/jquery/1.9.1/jquery.min.js'
+        }
+      }*/
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
