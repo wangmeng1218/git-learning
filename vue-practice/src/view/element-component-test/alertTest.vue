@@ -19,6 +19,11 @@
       }
     },
     mounted () {
+      let script = document.createElement('script');
+      script.type = 'text/javascript';
+
+      script.src = 'https://www.runoob.com/try/ajax/jsonp.php?&jsoncallback=handleData';
+      document.body.appendChild(script);
       this.$nextTick(() => {
         this.triggerClick();
         this.testMixin();
