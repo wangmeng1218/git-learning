@@ -22,6 +22,9 @@
       this.$nextTick(() => {
         this.triggerClick();
         this.testMixin();
+        /*this.$Get('http://192.168.101.129:9000/user/api/v1/user/all').then((data) => {
+          console.log(data);
+        })*/
       })
     },
     methods: {

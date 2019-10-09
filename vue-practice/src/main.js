@@ -8,8 +8,11 @@ import router from './router'
 import Utils from './utils/utils'
 import customizeComponent from './components'
 Vue.config.productionTip = false
+import {get,post} from './utils/request'
 
 Vue.prototype.$Utils = Utils
+Vue.prototype.$Get = get
+Vue.prototype.$Post = post
 // 全局使用ElementUI
 Vue.use(ElementUI)
 Vue.use(customizeComponent)
