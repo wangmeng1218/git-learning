@@ -11,7 +11,6 @@ const request = axios.create({
 
 // 添加请求拦截器
 request.interceptors.request.use(function(config){
-  console.log(config);
   // 在发送请求前处理请求数据
   return config;
 }, function (error) {
@@ -32,7 +31,6 @@ request.interceptors.response.use(function(response){
   }
 
   // 对响应错误做些什么
-  console.dir(error);
   return Promise.reject(error);
 });
 

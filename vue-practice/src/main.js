@@ -10,8 +10,7 @@ import customizeComponent from './components'
 Vue.config.productionTip = false
 import {get,post} from './utils/request'
 
-const mock = true;
-if(mock){
+if(process.env.MOCK_DATA){
   require('./mock')
 }
 
