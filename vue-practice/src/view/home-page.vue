@@ -16,6 +16,12 @@
                 <el-menu-item index="2-1" @click="goToSubPage('2-1')">渲染函数</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
+            <el-submenu index="3">
+              <template slot="title"><i class="el-icon-help"></i>Lodash</template>
+              <el-menu-item-group>
+                <el-menu-item index="3-1" @click="goToSubPage('3-1')">Lodash方法测试</el-menu-item>
+              </el-menu-item-group>
+            </el-submenu>
           </el-menu>
         </el-aside>
         <el-container style="width:100%;">
@@ -51,6 +57,10 @@
           } else if (position === '2-1') {
             if (this.$route.path !== '/render-learning') {
               this.$router.replace('render-learning');
+            }
+          } else if (position === '3-1') {
+            if (this.$route.path !== '/lodash-use') {
+              this.$router.replace('lodash-use');
             }
           }
         }

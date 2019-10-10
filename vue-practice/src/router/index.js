@@ -5,6 +5,7 @@ import TableRowMerge from '@/view/element-table/table-row-merge-show'
 import RenderLearning from '@/view/render-test/render-learning'
 import AlertTest from '@/view/element-component-test/alertTest'
 import HomePage from '@/view/home-page'
+import LodashUse from '@/view/lodash-test/lodash-use'
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ export default new Router({
           path: '/alert-test',
           name: 'AlertTest',
           component: AlertTest
+        },
+        {
+          path:'/lodash-use',
+          name: 'LodashUse',
+          component: LodashUse
         }
       ]
     }
