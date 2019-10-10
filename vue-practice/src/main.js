@@ -10,6 +10,11 @@ import customizeComponent from './components'
 Vue.config.productionTip = false
 import {get,post} from './utils/request'
 
+const mock = true;
+if(mock){
+  require('./mock')
+}
+
 Vue.prototype.$Utils = Utils
 Vue.prototype.$Get = get
 Vue.prototype.$Post = post
