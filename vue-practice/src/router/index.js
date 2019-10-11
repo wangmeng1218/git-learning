@@ -12,9 +12,11 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
+      alias: '/',
+      path: '/home-page',
       name: 'HomePage',
       component: HomePage,
+      redirect: 'alert-test',
       children: [
         {
           path: '/table-row-merge',

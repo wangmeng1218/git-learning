@@ -9,6 +9,7 @@ import Utils from './utils/utils'
 import customizeComponent from './components'
 Vue.config.productionTip = false
 import {get,post} from './utils/request'
+import store from './store'
 
 if(process.env.MOCK_DATA){
   require('./mock')
@@ -24,6 +25,7 @@ Vue.use(customizeComponent)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

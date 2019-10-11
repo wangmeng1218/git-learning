@@ -105,9 +105,9 @@ export default {
   },
   methods: {
     getInitData () {
-      this.$Get('getElementTableData').then((res) => {
-        this.tableData = res.data.tableData;
-        this.riskEvaluateData = res.data.riskEvaluateData;
+      this.$Get('getElementTableData').then((data) => {
+        this.tableData = data.tableData;
+        this.riskEvaluateData = data.riskEvaluateData;
         this.tableDataSorted = this.dealWithTableData(this.tableData, this.mergeAttr)
         this.checkRiskEvaluateData();
       });

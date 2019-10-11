@@ -6,7 +6,17 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data () {
+    return {
+      views: []
+    }
+  },
+  created () {
+    this.$Get('getMenus').then((data) => {
+      console.log(data);
+    })
+  }
 }
 </script>
 

@@ -21,7 +21,7 @@ request.interceptors.request.use(function(config){
 // 添加响应拦截
 request.interceptors.response.use(function(response){
   // 只返回数据
-  return response;
+  return response.data;
 },function (error) {
   const status = error.response.status;
   if(status >= 500){
