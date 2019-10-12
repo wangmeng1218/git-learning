@@ -15,10 +15,7 @@ export default {
   },
   created () {
     this.$Get('getMenus').then((data) => {
-      console.log(data.routerData);
       data.routerData.forEach((value,index) => {
-        console.log(value.path.replace(/\//g,''));
-        console.log(views);
         value['component'] = views[value.name]
       });
 

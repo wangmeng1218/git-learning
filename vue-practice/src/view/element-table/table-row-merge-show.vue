@@ -101,7 +101,6 @@ export default {
     this.$nextTick(function () {
       this.getInitData();
     })
-    console.log('父组件mounted')
   },
   methods: {
     getInitData () {
