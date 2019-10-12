@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import views from './view'
 export default {
   name: 'App',
   data () {
@@ -14,7 +15,24 @@ export default {
   },
   created () {
     this.$Get('getMenus').then((data) => {
-      console.log(data);
+      console.log(data.routerData);
+      data.routerData.forEach((value,index) => {
+        console.log(value.path.replace(/\//g,''));
+        console.log(views);
+        value['component'] = views[value.name]
+      });
+
+      let router = {
+        alias: '/',
+        path: '/home-page',
+        name: 'HomePage',
+        component: views['HomePage'],
+        redirect: 'alert-test',
+        children: data.routerData
+      };
+      this.$router.addRoutes([router]);
+
+      this.$store.commit('setMenuNav',data.menuData);
     })
   }
 }

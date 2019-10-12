@@ -3,7 +3,7 @@
       <el-container  style="height:100%;border: 1px solid #eee">
         <el-aside style="background-color: rgb(238, 241, 246);text-align: left;width:200px;">
           <el-menu router default-active="alert-test">
-            <el-submenu v-for="(item, index) in menuData" :index="item.index" :key="index">
+            <el-submenu v-for="(item, index) in $store.state.menuNavData" :index="item.index" :key="index">
               <template slot="title"><i :class="item.icon"></i>{{item.name}}</template>
               <el-menu-item-group v-if="item.children.length !== 0">
                 <el-menu-item  v-for="(item1, index1) in item.children" :index="item1.index" :key="index1">
@@ -11,25 +11,6 @@
                 </el-menu-item>
               </el-menu-item-group>
             </el-submenu>
-            <!--<el-submenu index="1">
-              <template slot="title"><i class="el-icon-eleme"></i>组件使用测试</template>
-              <el-menu-item-group>
-                <el-menu-item index="alert-test">JSONP跨域</el-menu-item>
-                <el-menu-item index="table-row-merge">表格行列合并</el-menu-item>
-              </el-menu-item-group>
-            </el-submenu>
-            <el-submenu index="2">
-              <template slot="title"><i class="el-icon-thumb"></i>Vue</template>
-              <el-menu-item-group>
-                <el-menu-item index="render-learning">渲染函数</el-menu-item>
-              </el-menu-item-group>
-            </el-submenu>
-            <el-submenu index="3">
-              <template slot="title"><i class="el-icon-help"></i>Lodash</template>
-              <el-menu-item-group>
-                <el-menu-item index="lodash-use">Lodash方法测试</el-menu-item>
-              </el-menu-item-group>
-            </el-submenu>-->
           </el-menu>
         </el-aside>
         <el-container style="width:100%;">
@@ -46,69 +27,11 @@
       name: "home-page",
       data() {
         return{
-          menuData: [
-            {
-              name: '组件使用测试',
-              index: '1',
-              icon: 'el-icon-eleme',
-              children: [
-                  {
-                    name: 'JSONP跨域',
-                    index: 'alert-test'
-                  },
-                  {
-                    name: '表格行列合并',
-                    index: 'table-row-merge'
-                  }
-                ]
-            },
-            {
-              name: 'Vue',
-              index: '2',
-              icon: 'el-icon-thumb',
-              children: [
-                  {
-                    name: '渲染函数',
-                    index: 'render-learning'
-                  }
-                ]
-            },
-            {
-              name: 'Lodash',
-              index: '3',
-              icon: 'el-icon-help',
-              children: [
-                  {
-                    name: 'Lodash方法测试',
-                    index: 'lodash-use'
-                  }
-              ]
-            }
-          ]
         }
       },
       mounted() {
       },
       methods:{
-        /*goToSubPage (position) {
-          if (position === '1-1') {
-            if (this.$route.path !== '/alert-test') {
-              this.$router.replace('alert-test');
-            }
-          } else if (position === '1-2') {
-            if (this.$route.path !== '/table-row-merge') {
-              this.$router.replace('table-row-merge');
-            }
-          } else if (position === '2-1') {
-            if (this.$route.path !== '/render-learning') {
-              this.$router.replace('render-learning');
-            }
-          } else if (position === '3-1') {
-            if (this.$route.path !== '/lodash-use') {
-              this.$router.replace('lodash-use');
-            }
-          }
-        }*/
       }
     }
 </script>
