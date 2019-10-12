@@ -1,5 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
+/*const originalPush = Router.prototype.push
+Router.prototype.push = function push(location){
+  return originalPush.call(this,location).catch(err =>err)
+}*/
 // import HelloWorld from '@/components/HelloWorld'
 // import TableRowMerge from '@/view/element-table/table-row-merge-show'
 // import RenderLearning from '@/view/render-test/render-learning'
