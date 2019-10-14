@@ -4,7 +4,7 @@ import Vue from 'vue'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import App from './App'
-import router from './router'
+import { createRouter } from './router/index'
 import Utils from './utils/utils'
 import customizeComponent from './components'
 Vue.config.productionTip = false
@@ -21,6 +21,8 @@ Vue.prototype.$Post = post
 Vue.use(ElementUI)
 Vue.use(customizeComponent)
 /* eslint-disable no-new */
+let router = createRouter([]);
+
 new Vue({
   el: '#app',
   router,

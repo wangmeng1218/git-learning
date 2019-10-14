@@ -6,6 +6,7 @@
 
 <script>
 import views from './view'
+import { createRouter } from './router/index'
 export default {
   name: 'App',
   data () {
@@ -27,8 +28,9 @@ export default {
         redirect: 'alert-test',
         children: data.routerData
       };
-      this.$router.addRoutes([router]);
 
+      this.$router.matcher = createRouter([]).matcher;
+      this.$router.addRoutes([router]);
       this.$store.commit('setMenuNav',data.menuData);
     })
   }
