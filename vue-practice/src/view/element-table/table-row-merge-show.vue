@@ -3,7 +3,7 @@
       <!--<table-row-merge ref="TableRowMergeREF" :tableData="tableData" merge-attr="code" :merge-column="mergeColumn" v-model="typeObj">-->
       <el-table
         :data="tableDataSorted"
-        :span-method="arraySpanMethod"
+        :span-method="arraySpanMethod1"
         border
         style="width:100%;">
         <el-table-column
@@ -139,7 +139,7 @@ export default {
       this.$emit('input', typeObj)
       return resultArr
     },
-    arraySpanMethod ({ row, column, rowIndex, columnIndex }) {
+    arraySpanMethod1 ({ row, column, rowIndex, columnIndex }) {
       if (this.mergeColumn.indexOf(columnIndex) !== -1) {
         if (row.rowSpan !== 'undefined') {
           return [row.rowSpan, 1]
