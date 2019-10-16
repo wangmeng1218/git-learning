@@ -1,8 +1,35 @@
 <template>
-    <div id="pageContainer" @mousedown="containerClicked" style="padding: 10px;">
+    <div id="pageContainer" @mousedown="containerClicked" class="alert-test-container">
       <el-alert
-        title="警告框标题"
+        title="给定标题"
         type="success"
+        effect="light">
+      </el-alert>
+      <el-alert
+        type="info"
+        effect="light">
+        <template slot="title"><h1>具名插槽</h1></template>
+      </el-alert>
+      <el-alert
+        type="warning"
+        effect="light">
+        <template slot><span style="color:greenyellow;">匿名插槽</span></template>
+      </el-alert>
+      <el-alert
+        description="描述内容"
+        type="error"
+        effect="light">
+      </el-alert>
+      <el-alert
+        title="关闭描述"
+        close-text="关闭"
+        type="error"
+        effect="light">
+      </el-alert>
+      <el-alert
+        title="不可关闭"
+        :closable="false"
+        type="error"
         effect="light">
       </el-alert>
     </div>
@@ -55,5 +82,11 @@
 </script>
 
 <style scoped>
-
+.alert-test-container{
+  height: 50%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 </style>
