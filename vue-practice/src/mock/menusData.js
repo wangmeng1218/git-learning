@@ -17,6 +17,10 @@ export default {
         {
           path:'/lodash-use',
           name: 'LodashUse'
+        },
+        {
+          path:'/localforage-test',
+          name: 'LocalforageTest'
         }
       ],
       menuData: [
@@ -47,13 +51,17 @@ export default {
           ]
         },
         {
-          name: 'Lodash',
+          name: '工具测试',
           index: '3',
           icon: 'el-icon-help',
           children: [
             {
               name: 'Lodash方法测试',
               index: 'lodash-use'
+            },
+            {
+              name: 'Localforage使用测试',
+              index: 'localforage-test'
             }
           ]
         }
