@@ -5,14 +5,13 @@
 </template>
 
 <script>
-  import localforage from 'localforage'
   export default {
     name: "localforage-test",
     data () {
       return {}
     },
     created () {
-      localforage.setItem('levi','leviis160');
+      $Cache.setItem('kajiang','最像反派的正派');
     },
     mounted () {},
     methods: {

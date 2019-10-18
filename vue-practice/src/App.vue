@@ -14,6 +14,7 @@ export default {
       views: []
     }
   },
+  // 页面加载，请求菜单及路由数据
   created () {
     this.$Get('getMenus').then((data) => {
       data.routerData.forEach((value,index) => {
@@ -29,6 +30,7 @@ export default {
         children: data.routerData
       };
 
+      // 调用addRoutes方法之前，重置当前router对象的matcher属性，防止路由重发添加的错误
       this.$router.matcher = createRouter([]).matcher;
       this.$router.addRoutes([router]);
       this.$store.commit('setMenuNav',data.menuData);

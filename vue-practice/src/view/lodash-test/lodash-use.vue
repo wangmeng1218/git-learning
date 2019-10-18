@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  let _ = require('lodash')
+  let _ = require('lodash');
   export default {
     name: "lodash-use",
     data (){
