@@ -19,37 +19,49 @@ Router.prototype.push = function push(location){
 // import LodashUse from '@/view/lodash-test/lodash-use'
 Vue.use(Router);
 
-export const createRouter = (routes) => new Router({
-  routes
-  /*routes: [
-    {
-      alias: '/',
-      path: '/home-page',
-      name: 'HomePage',
-      component: HomePage,
-      redirect: 'alert-test',
-      children: [
+export const createRouter = (routes) => {
+    let router = new Router({
+      routes
+      /*routes: [
         {
-          path: '/table-row-merge',
-          name: 'TableRowMerge',
-          component: TableRowMerge
-        },
-        {
-          path: '/render-learning',
-          name: 'RenderLearning',
-          component: RenderLearning
-        },
-        {
-          path: '/alert-test',
-          name: 'AlertTest',
-          component: AlertTest
-        },
-        {
-          path:'/lodash-use',
-          name: 'LodashUse',
-          component: LodashUse
+          alias: '/',
+          path: '/home-page',
+          name: 'HomePage',
+          component: HomePage,
+          redirect: 'alert-test',
+          children: [
+            {
+              path: '/table-row-merge',
+              name: 'TableRowMerge',
+              component: TableRowMerge
+            },
+            {
+              path: '/render-learning',
+              name: 'RenderLearning',
+              component: RenderLearning
+            },
+            {
+              path: '/alert-test',
+              name: 'AlertTest',
+              component: AlertTest
+            },
+            {
+              path:'/lodash-use',
+              name: 'LodashUse',
+              component: LodashUse
+            }
+          ]
         }
-      ]
-    }
-  ]*/
-});
+      ]*/
+    });
+    // 路由跳转前拦截
+    router.beforeEach((to, from, next) => {
+      // console.log('路由跳转前');
+      next();
+    });
+    // 路由跳转后执行
+    router.afterEach((to, from) => {
+      // console.log('路由跳转后');
+    });
+    return router;
+};
