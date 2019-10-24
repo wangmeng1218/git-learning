@@ -13,7 +13,7 @@
             </el-submenu>
           </el-menu>
         </el-aside>
-        <el-container style="width:100%;">
+        <el-container style="width:100%;height:100%;">
           <el-main>
             <router-view/>
           </el-main>

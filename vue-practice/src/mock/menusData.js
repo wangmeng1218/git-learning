@@ -21,6 +21,10 @@ export default {
         {
           path:'/localforage-test',
           name: 'LocalforageTest'
+        },
+        {
+          path: '/render-start',
+          name: 'RenderStart'
         }
       ],
       menuData: [
@@ -47,6 +51,10 @@ export default {
             {
               name: '渲染函数',
               index: 'render-learning'
+            },
+            {
+              name: '三级时间轴测试',
+              index: 'render-start'
             }
           ]
         },

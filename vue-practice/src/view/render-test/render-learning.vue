@@ -11,7 +11,13 @@
           children: [
             {
               id: 'div1children1',
-              label: '子条目1'
+              label: '子条目1',
+              children: [
+                {
+                  id: 'div1children1grandchildren1',
+                  label: '111111111'
+                }
+              ]
             }
           ]
         }, {
@@ -20,7 +26,13 @@
           children: [
             {
               id: 'div2children1',
-              label: '子条目1'
+              label: '子条目1',
+              children: [
+                {
+                  id: 'div2children1grandchildren1',
+                  label: '111111111'
+                }
+              ]
             }
           ]
         }, {
@@ -37,7 +49,13 @@
             },
             {
               id: 'div3children3',
-              label: '子条目3'
+              label: '子条目3',
+              children: [
+                {
+                  id: 'div3children3grandchildren1',
+                  label: '111111111'
+                }
+              ]
             }
           ]
         }, {
@@ -58,7 +76,17 @@
             },
             {
               id: 'div5children3',
-              label: '子条目3'
+              label: '子条目3',
+              children: [
+                {
+                  id: 'div5children3grandchildren1',
+                  label: '111111111'
+                },
+                {
+                  id: 'div5children3grandchildren2',
+                  label: '222222222'
+                }
+              ]
             }
           ]
         }],
@@ -189,7 +217,7 @@
             'div',
             {
               style: {
-                height: (index + 1) * 150 + 'px'
+                height: (index + 1) * 300 + 'px'
               },
               attrs: {
                 id: data.id,
@@ -211,7 +239,7 @@
             'div',
             {
               style: {
-                height: (index + 1) * 60 + 'px'
+                height: (index + 1) * 120 + 'px'
               },
               attrs: {
                 id: value.id,
