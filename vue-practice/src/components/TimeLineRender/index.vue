@@ -1,4 +1,4 @@
-
+<!--渲染函数嵌套的时候，this指向会发生改变，所以需要往下传递this对象-->
 <script>
   export default {
     name: "time-line-render",
@@ -12,6 +12,21 @@
       activeId: {
         type: String,
         default: ''
+      },
+      // 节点主键，默认为id
+      itemKey: {
+        type: String,
+        default: 'id'
+      },
+      // 用于显示的属性名称，默认为label
+      itemValue: {
+        type: String,
+        default: 'label'
+      },
+      // 子节点属性名称，默认为children
+      itemChildren: {
+        type: String,
+        default: 'children'
       }
     },
     data() {
@@ -27,21 +42,26 @@
       }
     },
     watch: {
+      // 监听活动主键的变化
       activeId: {
         immediate: true,
         handler (val) {
+          // 调用函数 重新获取活动叶子节点、获取活动叶子节点的上级节点集合等
           this.currentIdChanged(val);
         }
       },
+      // 监听时间轴数据变化
       lineData: {
         immediate: true,
         deep: true,
         handler (val) {
+          // 当数据变化，重新计算各一级节点对应的累计子节点数
           let num = 0;
           this.subNumArr = this.getNodesNumber(val, num);
         }
       }
     },
+    // 渲染函数
     render: function (h){
       let componentsArr = [];
       let firstSpan = this.getFirstSpan(h);
@@ -63,66 +83,81 @@
       )
     },
     computed: {
+      // 计算一级节点高亮侧边所在高度
       sliderTop () {
+        // 如果是第一个一级节点高亮，则高度为0，否则高度为累计节点数（一级节点数+累计子节点数）乘以24
         return this.currentIndex === 0 ? this.currentIndex * 24 + 'px' : (this.currentIndex + this.subNumArr[this.currentIndex - 1]) * 24 + 'px'
       }
     },
     methods: {
+      // 获取累计子节点数量
       getNodesNumber(data, num) {
         return data.map(value => {
-          if ('children' in value) {
-            num += value.children.length;
+          if (this.itemChildren in value) {
+            num += value[this.itemChildren].length;
             // console.log(num);
-            num = this.getNumber(value.children, num);
+            // 递归计算子节点数量，需要对num赋值，否则在getNumber中操作的num无法传递到当前函数
+            num = this.getNumber(value[this.itemChildren], num);
             // console.log(num);
           }
+          // 返回当前一级节点对应的累计子节点数
           return num;
         });
       },
       // 递归计算子节点数量
       getNumber (data, num) {
         data.map(value => {
-          if ('children' in value) {
+          if (this.itemChildren in value) {
             // console.log('进入递归');
             // console.log('前' + num);
-            num += value.children.length;
+            num += value[this.itemChildren].length;
             // console.log('后' + num);
-            num = this.getNumber(value.children, num);
+            num = this.getNumber(value[this.itemChildren], num);
           }
         });
         return num;
       },
       // 当活动id改变时触发，时间轴点击事件或者activeId参数变化时调用
       currentIdChanged(id) {
+        // 重新查找叶子活动节点
         this.timeLineRefresh(this.lineData, id);
+        // 获取活动叶子节点的所有上级节点集合
         this.getParentNodes(this.currentId, this.lineData);
+        // 获取所有一级节点
         let parentIdArr = this.lineData.map(item => {
-          return item.id;
+          return item[this.itemKey];
         });
-        if (parentIdArr.indexOf(this.nodes[0]) !== -1) {
+        // 如果活动叶子节点不是一级节点
+        if (this.nodes.length !== 0) {
+          // 活动一级节点的索引就是 活动叶子节点的最上级节点在 所有一级节点集合中的位置
           this.currentIndex = parentIdArr.indexOf(this.nodes[0]);
         } else {
+          // 否则，活动节点就是一级节点，那么活动一级节点的索引就是当前活动节点在一级节点集合中的位置
           this.currentIndex = parentIdArr.indexOf(this.currentId);
         }
       },
-      // 时间轴点击事件
+      // 时间轴点击事件，event对象，点击的节点主键，点击的节点对象
       itemClicked(event, id, item) {
+        // 调用活动节点改变函数，使画面上高亮节点发生变化
         this.currentIdChanged(id);
+        // 将点击的节点id及对应的整个节点传给父组件
         this.$emit('click', id, item);
+        // 阻止事件冒泡
         event.stopPropagation();
       },
       // 获取给定id的叶子节点
       timeLineRefresh (data, id) {
         // 在当前层查找id
         let flag = data.find(item => {
-          return item.id === id;
+          return item[this.itemKey] === id;
         });
         // 如果找到，查看当前节点是否是叶子节点
         if (flag) {
           data.forEach((value) => {
-            if (value.id === id) {
-              if (typeof value.children !== 'undefined' && value.children.length !== 0) {
-                this.timeLineRefresh(value.children, value.children[0].id);
+            // 找到id对应的一级节点，查看节点下是否还有子节点，如果有 递归查找子节点下的第一个节点，直到找到最终的叶子节点
+            if (value[this.itemKey] === id) {
+              if (typeof value[this.itemChildren] !== 'undefined' && value[this.itemChildren].length !== 0) {
+                this.timeLineRefresh(value[this.itemChildren], value[this.itemChildren][0][this.itemKey]);
               } else {
                 this.currentId = id;
               }
@@ -130,8 +165,8 @@
           })
         } else { // 没找到，对数据的子节点执行查找函数
           data.forEach((value) => {
-            if (typeof value.children !== 'undefined' && value.children.length !== 0) {
-              this.timeLineRefresh(value.children,id);
+            if (typeof value[this.itemChildren] !== 'undefined' && value[this.itemChildren].length !== 0) {
+              this.timeLineRefresh(value[this.itemChildren],id);
             }
           })
         }
@@ -143,13 +178,13 @@
       },
       _getParentNodes(his, targetId, tree) {
         tree.some((list) => {
-          const children = list.children || [];
-          if (list.id === targetId) {
+          const children = list[this.itemChildren] || [];
+          if (list[this.itemKey] === targetId) {
             this.nodes = his;
             return true;
           } else if (children.length > 0) {
             const history = [...his];
-            history.push(list.id);
+            history.push(list[this.itemKey]);
             return this._getParentNodes(history, targetId, children);
           }
         })
@@ -183,7 +218,7 @@
               },
               on: {
                 click: function(event){
-                  _this.itemClicked(event, item.id, item)
+                  _this.itemClicked(event, item[_this.itemKey], item)
                 }
               }
             },
@@ -191,10 +226,10 @@
               h(
                 'a',
                 {
-                  class: _this.currentId === item.id ? 'active' : ''
+                  class: _this.currentId === item[_this.itemKey] ? 'active' : ''
                 },
                 [
-                  item.label
+                  item[_this.itemValue]
                 ]
               ),
               ..._this.getSubItems(h,item,_this)
@@ -203,8 +238,8 @@
         })
       },
       getSubItems (h, item, _this) {
-        if (typeof item.children !== 'undefined' && item.children.length !== 0) {
-          return item.children.map(function(subItem, index){
+        if (typeof item[_this.itemChildren] !== 'undefined' && item[_this.itemChildren].length !== 0) {
+          return item[_this.itemChildren].map(function(subItem, index){
             return h(
               'div',
               {
@@ -214,7 +249,7 @@
                 },
                 on: {
                   click: function(event){
-                    _this.itemClicked(event, subItem.id, subItem)
+                    _this.itemClicked(event, subItem[_this.itemKey], subItem)
                   }
                 }
               },
@@ -253,7 +288,7 @@
           'span',
           {
             'class': {
-              'dot-span-active':_this.nodes.indexOf(item.id) !== -1 || _this.currentId === item.id,
+              'dot-span-active':_this.nodes.indexOf(item[_this.itemKey]) !== -1 || _this.currentId === item[_this.itemKey],
               'dot-span': true
             }
           },
@@ -269,9 +304,9 @@
         return h(
           'a',
           {
-            class: _this.currentId === item.id && (typeof item.children === 'undefined' || item.children.length === 0) ? 'active' : ''
+            class: _this.currentId === item[_this.itemKey] && (typeof item[_this.itemChildren] === 'undefined' || item[_this.itemChildren].length === 0) ? 'active' : ''
           },
-          item.label
+          item[_this.itemValue]
         )
       }
     }
