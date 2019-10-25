@@ -1,4 +1,5 @@
 import TableRowMerge from '@/view/element-table/table-row-merge-show'
+import TimeLineTest from '@/view/element-component-test/timeLineTest'
 import RenderLearning from '@/view/render-test/render-learning'
 import RenderStart from '@/view/render-test/render-start'
 import AlertTest from '@/view/element-component-test/alertTest'
@@ -17,7 +18,8 @@ let routes = {
   HomePage,
   LodashUse,
   LocalforageTest,
-  RenderStart
+  RenderStart,
+  TimeLineTest
 }
 
 export default routes;

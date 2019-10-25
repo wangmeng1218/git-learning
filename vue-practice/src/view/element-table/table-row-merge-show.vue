@@ -74,7 +74,7 @@ export default {
       tableData: [],
       tableDataSorted: [],
       riskEvaluateData: [],
-      mergeAttr: 'type',
+      mergeAttr: 'code',
       typeObj: {},
       RPNValue: 0,
       riskPriority: 0,
@@ -136,7 +136,8 @@ export default {
           }
         })
       })
-      this.$emit('input', typeObj)
+      this.typeObj = typeObj;
+      // this.$emit('input', typeObj)
       return resultArr
     },
     arraySpanMethod1 ({ row, column, rowIndex, columnIndex }) {

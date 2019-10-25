@@ -25,6 +25,10 @@ export default {
         {
           path: '/render-start',
           name: 'RenderStart'
+        },
+        {
+          path: '/time-line-test',
+          name: 'TimeLineTest'
         }
       ],
       menuData: [
@@ -40,6 +44,10 @@ export default {
             {
               name: '表格行列合并',
               index: 'table-row-merge'
+            },
+            {
+              name: '时间轴组件测试',
+              index: 'time-line-test'
             }
           ]
         },

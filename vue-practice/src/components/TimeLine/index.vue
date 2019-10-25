@@ -82,7 +82,7 @@ export default {
     }
   },
   methods: {
-    itemClick (index, ...subs) {
+    /*itemClick (index, ...subs) {
       this.currentIndex = index;
       if (subs.length === 0) {
         this.currentSubIndex = 0;
@@ -90,14 +90,23 @@ export default {
       } else {
         this.$emit('click', this.lineData[index].children[subs[0]].id)
       }
+    },*/
+    itemClick (index) {
+      this.currentIndex = index;
+      this.currentSubIndex = 0;
+      this.currentGrandIndex = 0;
+      this.$emit('click', this.lineData[index].id);
     },
     subItemClick (index, subIndex) {
       this.currentSubIndex = subIndex;
-      if (index !== this.currentIndex) {
+      this.currentIndex = index;
+      this.currentGrandIndex = 0;
+      this.$emit('click', this.lineData[index].children[subIndex].id)
+      /*if (index !== this.currentIndex) {
         this.itemClick(index, subIndex)
       } else {
         this.$emit('click', this.lineData[index].children[subIndex].id)
-      }
+      }*/
     },
     grandItemClick(index, subIndex, grandIndex) {
       this.currentGrandIndex = grandIndex;
@@ -116,7 +125,7 @@ export default {
 
 <style scoped>
   .time-line-box {
-    width: 300px;
+    width: 150px;
     position: relative;
     border-left:4px lightgrey solid;
     box-sizing: border-box;
@@ -174,7 +183,6 @@ export default {
     background-color: dodgerblue;
   }
   .time-line-grand-item{
-    display: block;
     line-height: 24px;
     padding-left: 20px;
   }

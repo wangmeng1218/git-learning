@@ -327,7 +327,7 @@
 
 <style scoped>
   .page-container{
-    height: 100vh;
+    height: 100%;
     box-sizing: border-box;
     padding: 10px 150px 10px 10px;
     background-color: whitesmoke;
