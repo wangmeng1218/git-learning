@@ -137,11 +137,11 @@
         }
       },
       // 时间轴点击事件，event对象，点击的节点主键，点击的节点对象
-      itemClicked(event, id, item) {
+      itemClicked(event, item, id) {
         // 调用活动节点改变函数，使画面上高亮节点发生变化
         this.currentIdChanged(id);
         // 将点击的节点id及对应的整个节点传给父组件
-        this.$emit('click', id, item);
+        this.$emit('click', item, id);
         // 阻止事件冒泡
         event.stopPropagation();
       },
@@ -218,7 +218,7 @@
               },
               on: {
                 click: function(event){
-                  _this.itemClicked(event, item[_this.itemKey], item)
+                  _this.itemClicked(event, item, item[_this.itemKey])
                 }
               }
             },
@@ -249,7 +249,7 @@
                 },
                 on: {
                   click: function(event){
-                    _this.itemClicked(event, subItem[_this.itemKey], subItem)
+                    _this.itemClicked(event, subItem, subItem[_this.itemKey])
                   }
                 }
               },

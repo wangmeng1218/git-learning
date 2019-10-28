@@ -125,7 +125,7 @@
       }
     },
     methods: {
-      selectedIdChanged(id, item) {
+      selectedIdChanged(item, id) {
         this.selectedId = id;
         // console.log(item);
       }
