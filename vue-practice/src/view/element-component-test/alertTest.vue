@@ -32,17 +32,29 @@
         type="error"
         effect="light">
       </el-alert>
+     <!-- <div style="width:160px;height:160px;position: relative;">
+        <img :src="logo"/>
+        <div style="position:absolute;bottom:6rem;left:2rem;width: 30px;height:30px;background:#fff;background:rgba(255, 255, 255, 0.5) none repeat scroll 0 0 !important;">12</div>
+      </div>-->
+      <!--<div style="width:30%;height:10%;display: flex;flex-direction: row;">
+        <div style="width:60%;">
+          <img style="width:auto;height:auto;max-width: 100%;max-height:100%;" :src="logo"/>
+        </div>
+        <div style="width:40%;">啦啦啦啦啦啦</div>
+      </div>-->
     </div>
 </template>
 
 <script>
+  import logo from '../../assets/logo.png'
   import mixin from '../../mixins/mixin'
   export default {
     name: "alert-test",
     mixins: [mixin],
     data () {
       return {
-        comment: ''
+        comment: '',
+        logo: logo
       }
     },
     mounted () {

@@ -2,7 +2,7 @@
   <div>
     <el-input v-model="selectedId" placeholder="输入id"/>
     <div style="position:fixed;width:200px;top:80px;right:5px;">
-      <time-line-render @click="selectedIdChanged" :line-data="lineData" :active-id="selectedId"></time-line-render>
+      <time-line-render itemKey="pid" item-children="pchildren" item-value="plabel" @click="selectedIdChanged" :line-data="lineData" :active-id="selectedId"></time-line-render>
     </div>
   </div>
 </template>
@@ -14,109 +14,112 @@
       return {
         selectedId: 'div1',
         lineData: [{
-          id: 'div1',
-          label: 'div1',
-          children: [
+          pid: 'div1',
+          plabel: 'div1',
+          pchildren: [
             {
-              id: 'd1c1',
-              label: 'd1c1',
-              children: [
+              pid: 'd1c1',
+              plabel: 'd1c1',
+              pchildren: [
                 {
-                  id: 'd1c1g1',
-                  label: 'd1c1g1',
-                  children: [
+                  pid: 'd1c1g1',
+                  plabel: 'd1c1g1',
+                  pchildren: [
                     {
-                      id: 'd1c1g1r1',
-                      label: 'd1c1g1r1'
+                      pid: 'd1c1g1r1',
+                      plabel: 'd1c1g1r1',
+                      disabled: true
                     }
                   ]
                 },
                 {
-                  id: 'd1c1g2',
-                  label: 'd1c1g2',
-                  children: [
+                  pid: 'd1c1g2',
+                  plabel: 'd1c1g2',
+                  pchildren: [
                     {
-                      id: 'd1c1g2r1',
-                      label: 'd1c1g2r1'
+                      pid: 'd1c1g2r1',
+                      plabel: 'd1c1g2r1',
+                      disabled: true
                     }
                   ]
                 },
                 {
-                  id: 'd1c1g3',
-                  label: 'd1c1g3'
+                  pid: 'd1c1g3',
+                  plabel: 'd1c1g3',
+                  disabled: true
                 }
               ]
             }
           ]
         }, {
-          id: 'div2',
-          label: 'div2',
-          children: [
+          pid: 'div2',
+          plabel: 'div2',
+          pchildren: [
             {
-              id: 'd2c1',
-              label: 'd2c1',
-              children: [
+              pid: 'd2c1',
+              plabel: 'd2c1',
+              pchildren: [
                 {
-                  id: 'd2c1g1',
-                  label: 'd2c1g1'
+                  pid: 'd2c1g1',
+                  plabel: 'd2c1g1'
                 }
               ]
             }
           ]
         }, {
-          id: 'div3',
-          label: 'div3',
-          children: [
+          pid: 'div3',
+          plabel: 'div3',
+          pchildren: [
             {
-              id: 'd3c1',
-              label: 'd3c1'
+              pid: 'd3c1',
+              plabel: 'd3c1'
             },
             {
-              id: 'd3c2',
-              label: 'd3c2'
+              pid: 'd3c2',
+              plabel: 'd3c2'
             },
             {
-              id: 'd3c3',
-              label: 'd3c3',
-              children: [
+              pid: 'd3c3',
+              plabel: 'd3c3',
+              pchildren: [
                 {
-                  id: 'd3c3g1',
-                  label: 'd3c3g1'
+                  pid: 'd3c3g1',
+                  plabel: 'd3c3g1'
                 },
                 {
-                  id: 'd3c3g2',
-                  label: 'd3c3g2'
+                  pid: 'd3c3g2',
+                  plabel: 'd3c3g2'
                 }
               ]
             }
           ]
         }, {
-          id: 'div4',
-          label: 'div4',
-          children: []
+          pid: 'div4',
+          plabel: 'div4',
+          pchildren: []
         }, {
-          id: 'div5',
-          label: 'div5',
-          children: [
+          pid: 'div5',
+          plabel: 'div5',
+          pchildren: [
             {
-              id: 'd5c1',
-              label: 'd5c1'
+              pid: 'd5c1',
+              plabel: 'd5c1'
             },
             {
-              id: 'd5c2',
-              label: 'd5c2'
+              pid: 'd5c2',
+              plabel: 'd5c2'
             },
             {
-              id: 'd5c3',
-              label: 'd5c3',
-              children: [
+              pid: 'd5c3',
+              plabel: 'd5c3',
+              pchildren: [
                 {
-                  id: 'd5c3g1',
-                  label: 'd5c3g1'
+                  pid: 'd5c3g1',
+                  plabel: 'd5c3g1'
                 },
                 {
-                  id: 'd5c3g2',
-                  label: 'd5c3g2'
+                  pid: 'd5c3g2',
+                  plabel: 'd5c3g2'
                 }
               ]
             }
