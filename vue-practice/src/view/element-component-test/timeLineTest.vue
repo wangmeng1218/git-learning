@@ -16,14 +16,17 @@
         lineData: [{
           pid: 'div1',
           plabel: 'div1',
+          disabled: false,
           pchildren: [
             {
               pid: 'd1c1',
               plabel: 'd1c1',
+              disabled: false,
               pchildren: [
                 {
                   pid: 'd1c1g1',
                   plabel: 'd1c1g1',
+                  disabled: false,
                   pchildren: [
                     {
                       pid: 'd1c1g1r1',
@@ -35,6 +38,7 @@
                 {
                   pid: 'd1c1g2',
                   plabel: 'd1c1g2',
+                  disabled: false,
                   pchildren: [
                     {
                       pid: 'd1c1g2r1',
@@ -54,14 +58,17 @@
         }, {
           pid: 'div2',
           plabel: 'div2',
+          disabled: false,
           pchildren: [
             {
               pid: 'd2c1',
               plabel: 'd2c1',
+              disabled: false,
               pchildren: [
                 {
                   pid: 'd2c1g1',
-                  plabel: 'd2c1g1'
+                  plabel: 'd2c1g1',
+                  disabled: false
                 }
               ]
             }
@@ -69,26 +76,32 @@
         }, {
           pid: 'div3',
           plabel: 'div3',
+          disabled: false,
           pchildren: [
             {
               pid: 'd3c1',
-              plabel: 'd3c1'
+              plabel: 'd3c1',
+              disabled: false
             },
             {
               pid: 'd3c2',
-              plabel: 'd3c2'
+              plabel: 'd3c2',
+              disabled: false
             },
             {
               pid: 'd3c3',
               plabel: 'd3c3',
+              disabled: false,
               pchildren: [
                 {
                   pid: 'd3c3g1',
-                  plabel: 'd3c3g1'
+                  plabel: 'd3c3g1',
+                  disabled: false
                 },
                 {
                   pid: 'd3c3g2',
-                  plabel: 'd3c3g2'
+                  plabel: 'd3c3g2',
+                  disabled: true
                 }
               ]
             }
@@ -96,30 +109,37 @@
         }, {
           pid: 'div4',
           plabel: 'div4',
+          disabled: false,
           pchildren: []
         }, {
           pid: 'div5',
           plabel: 'div5',
+          disabled: false,
           pchildren: [
             {
               pid: 'd5c1',
-              plabel: 'd5c1'
+              plabel: 'd5c1',
+              disabled: false
             },
             {
               pid: 'd5c2',
-              plabel: 'd5c2'
+              plabel: 'd5c2',
+              disabled: true
             },
             {
               pid: 'd5c3',
               plabel: 'd5c3',
+              disabled: false,
               pchildren: [
                 {
                   pid: 'd5c3g1',
-                  plabel: 'd5c3g1'
+                  plabel: 'd5c3g1',
+                  disabled: false
                 },
                 {
                   pid: 'd5c3g2',
-                  plabel: 'd5c3g2'
+                  plabel: 'd5c3g2',
+                  disabled: false
                 }
               ]
             }

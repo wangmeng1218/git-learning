@@ -95,10 +95,10 @@
         return data.map(value => {
           if (this.itemChildren in value) {
             num += value[this.itemChildren].length;
-            // console.log(num);
             // 递归计算子节点数量，需要对num赋值，否则在getNumber中操作的num无法传递到当前函数
-            num = this.getNumber(value[this.itemChildren], num);
-            // console.log(num);
+            let itemObj = this.getNumber(value[this.itemChildren], num);
+            num = itemObj.num;
+            value.disabled = itemObj.disabled;
           }
           // 返回当前一级节点对应的累计子节点数
           return num;
@@ -106,16 +106,22 @@
       },
       // 递归计算子节点数量
       getNumber (data, num) {
+        let disabled = true;
         data.map(value => {
+          if (value.disabled === false) {
+            disabled = false;
+          }
           if (this.itemChildren in value) {
-            // console.log('进入递归');
-            // console.log('前' + num);
             num += value[this.itemChildren].length;
-            // console.log('后' + num);
-            num = this.getNumber(value[this.itemChildren], num);
+            let obj = this.getNumber(value[this.itemChildren], num);
+            if (obj.disabled === false) {
+              disabled = false;
+            }
+            num = obj.num;
+            value.disabled = obj.disabled;
           }
         });
-        return num;
+        return { num , disabled};
       },
       // 当活动id改变时触发，时间轴点击事件或者activeId参数变化时调用
       currentIdChanged(id) {
@@ -137,11 +143,13 @@
         }
       },
       // 时间轴点击事件，event对象，点击的节点主键，点击的节点对象
-      itemClicked(event, item, id) {
-        // 调用活动节点改变函数，使画面上高亮节点发生变化
-        this.currentIdChanged(id);
-        // 将点击的节点id及对应的整个节点传给父组件
-        this.$emit('click', item, id);
+      itemClicked(event, item, id, disabled) {
+        if (!disabled) {
+          // 调用活动节点改变函数，使画面上高亮节点发生变化
+          this.currentIdChanged(id);
+          // 将点击的节点id及对应的整个节点传给父组件
+          this.$emit('click', item, id);
+        }
         // 阻止事件冒泡
         event.stopPropagation();
       },
@@ -214,11 +222,15 @@
             {
               key: index,
               attrs: {
-                class: 'time-line-item'
+                class: (typeof item.disabled !== 'undefined' && item.disabled === true) ? 'time-line-item-disabled' : 'time-line-item'
               },
               on: {
                 click: function(event){
-                  _this.itemClicked(event, item, item[_this.itemKey])
+                  if (!(typeof item.disabled !== 'undefined' && item.disabled === true)) {
+                    _this.itemClicked(event, item, item[_this.itemKey], false);
+                  } else {
+                    _this.itemClicked(event, item, item[_this.itemKey], true);
+                  }
                 }
               }
             },
@@ -226,7 +238,10 @@
               h(
                 'a',
                 {
-                  class: _this.currentId === item[_this.itemKey] ? 'active' : ''
+                  class:!(typeof item.disabled !== 'undefined' && item.disabled === true)&&_this.currentId === item[_this.itemKey] ? 'active' : '',
+                  attrs: {
+                    title: item[_this.itemValue]
+                  }
                 },
                 [
                   item[_this.itemValue]
@@ -245,11 +260,15 @@
               {
                 key: index,
                 attrs: {
-                  class: 'time-line-sub-item'
+                  class: (typeof subItem.disabled !== 'undefined' && subItem.disabled === true) ? 'time-line-sub-item-disabled' : 'time-line-sub-item'
                 },
                 on: {
                   click: function(event){
-                    _this.itemClicked(event, subItem, subItem[_this.itemKey])
+                    if (!(typeof subItem.disabled !== 'undefined' && subItem.disabled === true)) {
+                      _this.itemClicked(event, subItem, subItem[_this.itemKey],false)
+                    } else {
+                      _this.itemClicked(event, subItem, subItem[_this.itemKey],true)
+                    }
                   }
                 }
               },
@@ -304,7 +323,10 @@
         return h(
           'a',
           {
-            class: _this.currentId === item[_this.itemKey] && (typeof item[_this.itemChildren] === 'undefined' || item[_this.itemChildren].length === 0) ? 'active' : ''
+            class: !(typeof item.disabled !== 'undefined' && item.disabled === true) && _this.currentId === item[_this.itemKey] && (typeof item[_this.itemChildren] === 'undefined' || item[_this.itemChildren].length === 0) ? 'active' : '',
+            attrs: {
+              title: item[_this.itemValue]
+            }
           },
           item[_this.itemValue]
         )
@@ -344,6 +366,17 @@
     line-height: 24px;
     cursor: pointer;
   }
+  .time-line-item-disabled {
+    padding: 0 8px;
+    color: lightgrey;
+    transition: opacity .2s;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 24px;
+    cursor: not-allowed;
+  }
   .time-line-item .active {
     color: #2d8cf0;
   }
@@ -356,6 +389,17 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     cursor: pointer;
+  }
+  .time-line-sub-item-disabled {
+    display: flex;
+    color: lightgrey !important;
+    flex-direction: column;
+    line-height: 24px;
+    padding-left: 18px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: not-allowed;
   }
   .time-line-sub-item .active{
     color: #2d8cf0;
