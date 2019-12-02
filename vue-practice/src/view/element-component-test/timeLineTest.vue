@@ -109,8 +109,7 @@
         }, {
           pid: 'div4',
           plabel: 'div4',
-          disabled: false,
-          pchildren: []
+          disabled: false
         }, {
           pid: 'div5',
           plabel: 'div5',
@@ -147,10 +146,31 @@
         }]
       }
     },
+    mounted () {
+      let data = this.lineDataAddAttr(this.lineData);
+      // console.log(data.list);
+    },
     methods: {
       selectedIdChanged(item, id) {
         this.selectedId = id;
         // console.log(item);
+      },
+      lineDataAddAttr (data) {
+        let disabled = true;
+        let list = data.map(item => {
+          if (item.disabled === false) {
+            disabled = false;
+          }
+          if ('pchildren' in item) {
+            let obj = this.lineDataAddAttr(item.pchildren);
+            if(obj.disabled === false) {
+              disabled = false;
+            }
+            item.disabled = obj.disabled;
+          }
+          return item;
+        });
+        return {list, disabled};
       }
     }
   }
