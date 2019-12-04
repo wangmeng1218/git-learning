@@ -29,6 +29,10 @@ export default {
         {
           path: '/time-line-test',
           name: 'TimeLineTest'
+        },
+        {
+          path: '/dynamic-component',
+          name: 'DynamicComponent'
         }
       ],
       menuData: [
@@ -48,6 +52,10 @@ export default {
             {
               name: '时间轴组件测试',
               index: 'time-line-test'
+            },
+            {
+              name: '动态组件',
+              index: 'dynamic-component'
             }
           ]
         },

@@ -4,6 +4,7 @@ import Vue from 'vue'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import App from './App'
+import Notification from './components/notification'
 /**
  * 创建动态路由
  */
@@ -46,7 +47,7 @@ Vue.prototype.$Post = post;
 
 // 全局使用ElementUI
 Vue.use(ElementUI);
-
+Vue.use(Notification);
 // 全局使用自定义组件
 Vue.use(customizeComponent);
 /* eslint-disable no-new */

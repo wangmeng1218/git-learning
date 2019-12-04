@@ -6,6 +6,7 @@ import AlertTest from '@/view/element-component-test/alertTest'
 import HomePage from '@/view/home-page'
 import LodashUse from '@/view/lodash-test/lodash-use'
 import LocalforageTest from '@/view/localforage-test/localforage-test'
+import DynamicComponent from '@/view/element-component-test/dynamicComponent'
 
 const routerContext = require.context('./',true,/[a-zA-z\-]*\.vue$/);
 console.log('require.context.keys()结果');
@@ -19,7 +20,8 @@ let routes = {
   LodashUse,
   LocalforageTest,
   RenderStart,
-  TimeLineTest
+  TimeLineTest,
+  DynamicComponent
 }
 
 export default routes;

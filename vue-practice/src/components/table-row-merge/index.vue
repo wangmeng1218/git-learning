@@ -5,7 +5,8 @@
       :span-method="arraySpanMethod"
       border
       style="width:100%;">
-      <slot></slot>
+      <!--使用该组件时，假如父组件给出了slot='column'的插槽，则显示下面内容，否则不显示-->
+      <slot name="column" v-if="$slots.column"></slot>
     </el-table>
   </div>
 </template>
