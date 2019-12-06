@@ -58,6 +58,7 @@
       }
     },
     mounted () {
+      console.log('组件mounted');
       let script = document.createElement('script');
       script.type = 'text/javascript';
 
@@ -88,6 +89,9 @@
       },
       containerClicked () {
         console.log('点击事件');
+      },
+      testMixin () {
+        console.log('组件testMixin');
       }
     }
   }
