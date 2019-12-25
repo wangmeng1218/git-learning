@@ -44,7 +44,7 @@
         <div style="width:40%;">啦啦啦啦啦啦</div>
       </div>-->
       <el-input
-        placeholder="请输入内容"
+        placeholder="input事件中加入额外参数"
         v-model="inputValue"
         clearable
         @input="value => inputChange(value,input,'llll')">
