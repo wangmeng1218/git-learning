@@ -1,5 +1,6 @@
 <template>
     <div id="pageContainer" @mousedown="containerClicked" class="alert-test-container">
+      <!--<el-input resize="none" v-model="inputValue" type="textarea" :disabled="true"></el-input>-->
       <el-alert
         title="给定标题"
         type="success"
@@ -42,6 +43,12 @@
         </div>
         <div style="width:40%;">啦啦啦啦啦啦</div>
       </div>-->
+      <el-input
+        placeholder="请输入内容"
+        v-model="inputValue"
+        clearable
+        @input="value => inputChange(value,input,'llll')">
+      </el-input>
     </div>
 </template>
 
@@ -54,11 +61,27 @@
     data () {
       return {
         comment: '',
-        logo: logo
+        logo: logo,
+        inputValue: '司施工路口',
+        formData: {
+          type: '',
+          code: '',
+          number: '',
+          result: '',
+          remark: ''
+        },
+        input: 'input',
+        formRules: {
+          type: [{ required: true, message: '请输入类型', trigger: 'blur'}],
+          code: [{ required: true, message: '请输入编号', trigger: 'blur'}],
+          number: [{ required: true, message: '请输入数据', trigger: 'blur'}],
+          result: [{ required: true, message: '请输入结果', trigger: 'blur'}]
+        }
       }
     },
     mounted () {
       console.log('组件mounted');
+      console.log(this.$route.matched);
       let script = document.createElement('script');
       script.type = 'text/javascript';
 
@@ -67,12 +90,15 @@
       this.$nextTick(() => {
         this.triggerClick();
         this.testMixin();
-        /*this.$Get('http://192.168.101.129:9000/user/api/v1/user/all').then((data) => {
-          console.log(data);
-        })*/
-      })
+        // this.$Get('http://192.168.101.129:9000/user/api/v1/user/all').then((data) => {
+        //   console.log(data);
+        // })
+      });
     },
     methods: {
+      inputChange(...args){
+        console.log(args);
+      },
       triggerClick () {
         let elm = document.getElementById('pageContainer');
         this.triggerEvent('mousedown', elm);
@@ -88,21 +114,33 @@
         return elm
       },
       containerClicked () {
-        console.log('点击事件');
+        // console.log('点击事件');
       },
       testMixin () {
         console.log('组件testMixin');
+      },
+      confirmInfo () {
+        this.$refs['SimpleFormREF'].validate(valid => {
+          console.log("校验结果：" + valid);
+        });
       }
     }
   }
 </script>
 
-<style scoped>
-.alert-test-container{
-  height: 50%;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+<style lang="stylus">
+  .alert-test-container{
+    height: 50%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+      .el-textarea.is-disabled .el-textarea__inner {
+        background-color: #f7f7f7;
+        border: none;
+        border-radius 2px;
+        color: #666;
+        cursor: not-allowed;
+      }
+  }
 </style>
