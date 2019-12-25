@@ -33,7 +33,7 @@ export default {
       // 调用addRoutes方法之前，重置当前router对象的matcher属性，防止路由重发添加的错误
       this.$router.matcher = createRouter([]).matcher;
       this.$router.addRoutes([router]);
-      this.$store.commit('setMenuNav',data.menuData);
+      this.$store.commit('menu/setMenuNav',data.menuData);
     })
   }
 }

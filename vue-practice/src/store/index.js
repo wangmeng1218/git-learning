@@ -1,21 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import menu from './menu'
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-  state: {
-    menuNavData: []
-  },
-  getters: {
-  },
-  mutations: {
-    setMenuNav: (state, data) => {
-      state.menuNavData = data;
-    }
-  },
-  actions: {},
-  modules: {}
+  modules: { menu: menu }
 });
 
 export default store;
