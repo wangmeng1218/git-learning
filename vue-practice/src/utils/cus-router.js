@@ -51,8 +51,7 @@ class CusRouter {
   }
 }
 // 要使router成为插件，需要实现install方法
-CusRouter.install = funtion(_Vue)
-{
+CusRouter.install = function(_Vue) {
   // 混入
   _Vue.mixin({
     beforeCreate () {
