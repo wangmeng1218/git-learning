@@ -52,11 +52,25 @@ Vue.use(Notification);
 Vue.use(customizeComponent);
 /* eslint-disable no-new */
 let router = createRouter([]);
-
+/**
+* 初始化new Vue创建Vue实例
+* 通过$mount挂载组件
+* [指定el===$mount(el)]
+* $mount调用编译器，把编写的模板编译成render函数
+* 得到渲染函数
+* 生成虚拟dom
+* patch将虚拟dom转换成真实dom
+* */
 new Vue({
-  el: '#app',
   router,
   store,
-  components: { App },
-  template: '<App/>'
-});
+  render: h => h(App)
+}).$mount('#app');
+// 相当于
+// new Vue({
+//   el: '#app',
+//   router,
+//   store,
+//   components: { App },
+//   template: '<App/>'
+// });
