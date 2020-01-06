@@ -33,12 +33,27 @@ export default {
         {
           path: '/dynamic-component',
           name: 'DynamicComponent'
+        },
+        {
+          path: '/closure',
+          name: 'Closure'
         }
       ],
       menuData: [
         {
-          name: '组件使用测试',
+          name: '闭包',
           index: '1',
+          icon: 'el-icon-magic-stick',
+          children: [
+            {
+              name: '闭包测试',
+              index: 'closure'
+            }
+          ]
+        },
+        {
+          name: '组件使用测试',
+          index: '2',
           icon: 'el-icon-eleme',
           children: [
             {
@@ -61,7 +76,7 @@ export default {
         },
         {
           name: 'Vue',
-          index: '2',
+          index: '3',
           icon: 'el-icon-thumb',
           children: [
             {
@@ -76,7 +91,7 @@ export default {
         },
         {
           name: '工具测试',
-          index: '3',
+          index: '4',
           icon: 'el-icon-help',
           children: [
             {

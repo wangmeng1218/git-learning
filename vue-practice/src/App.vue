@@ -21,12 +21,14 @@ export default {
         value['component'] = views[value.name]
       });
 
+      let redirect = data.menuData[0].children ? data.menuData[0].children[0].index : data.menuData[0].index;
+      console.log(redirect);
       let router = {
         alias: '/',
         path: '/home-page',
         name: 'HomePage',
         component: views['HomePage'],
-        redirect: 'alert-test',
+        redirect: redirect,
         children: data.routerData
       };
 

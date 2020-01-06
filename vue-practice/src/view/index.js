@@ -7,10 +7,11 @@ import HomePage from '@/view/home-page'
 import LodashUse from '@/view/lodash-test/lodash-use'
 import LocalforageTest from '@/view/localforage-test/localforage-test'
 import DynamicComponent from '@/view/element-component-test/dynamicComponent'
+import Closure from '@/view/closure/closure'
 
 const routerContext = require.context('./',true,/[a-zA-z\-]*\.vue$/);
-console.log('require.context.keys()结果');
-console.log(routerContext.keys());
+// console.log('require.context.keys()结果');
+// console.log(routerContext.keys());
 
 let routes = {
   TableRowMerge,
@@ -21,7 +22,8 @@ let routes = {
   LocalforageTest,
   RenderStart,
   TimeLineTest,
-  DynamicComponent
+  DynamicComponent,
+  Closure
 }
 
 export default routes;

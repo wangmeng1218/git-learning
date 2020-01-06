@@ -2,7 +2,7 @@
     <div style="height: 100%;position: fixed;width:100%;">
       <el-container  style="height:100%;border: 1px solid #eee">
         <el-aside style="background-color: rgb(238, 241, 246);text-align: left;width:200px;">
-          <el-menu router default-active="alert-test">
+          <el-menu router :default-active="defaultActive">
             <el-submenu v-for="(item, index) in $store.state.menu.menuNavData" :index="item.index" :key="index">
               <template slot="title"><i :class="item.icon"></i>{{item.name}}</template>
               <el-menu-item-group v-if="item.children.length !== 0">
@@ -27,6 +27,11 @@
       name: "home-page",
       data() {
         return{
+        }
+      },
+      computed: {
+        defaultActive() {
+          return this.$store.state.menu.menuNavData[0].children ? this.$store.state.menu.menuNavData[0].children[0].index : this.$store.state.menu.menuNavData[0].index;
         }
       },
       mounted() {
