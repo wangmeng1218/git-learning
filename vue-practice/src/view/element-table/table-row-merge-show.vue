@@ -1,5 +1,6 @@
 <template>
     <div>
+      <father-com @back="comBack" :name="mergeAttr" :content="mergeAttr" :attr1="mergeAttr" :attr2="mergeAttr"></father-com>
       <!--<table-row-merge ref="TableRowMergeREF" :tableData="tableData" merge-attr="code" :merge-column="mergeColumn" v-model="typeObj">-->
       <el-table
         :data="tableDataSorted"
@@ -67,7 +68,10 @@
 </template>
 
 <script>
+import FatherCom from "./father-com";
+
 export default {
+  components: {FatherCom},
   name: 'table-row-merge1',
   data () {
     return {
@@ -103,6 +107,9 @@ export default {
     })
   },
   methods: {
+    comBack(content){
+      console.log(content);
+    },
     getInitData () {
       this.$Get('getElementTableData').then((data) => {
         this.tableData = data.tableData;
