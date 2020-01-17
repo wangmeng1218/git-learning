@@ -1,6 +1,6 @@
 <template>
     <div>
-      <father-com @back="comBack" :name="mergeAttr" :content="mergeAttr" :attr1="mergeAttr" :attr2="mergeAttr"></father-com>
+      <father-com @back="comBack" :name.sync="mergeAttr" v-bind="bindValue"></father-com>
       <!--<table-row-merge ref="TableRowMergeREF" :tableData="tableData" merge-attr="code" :merge-column="mergeColumn" v-model="typeObj">-->
       <el-table
         :data="tableDataSorted"
@@ -83,7 +83,15 @@ export default {
       RPNValue: 0,
       riskPriority: 0,
       mergeColumn: [0, 3],
-      operatorArr: []
+      operatorArr: [],
+      content: 'content',
+      attr1: 'attr1',
+      attr2: 'attr2',
+      bindValue: {
+        content: 'content',
+        attr1: 'attr1',
+        attr2: 'attr2'
+      }
     }
   },
   provide () {
