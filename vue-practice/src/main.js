@@ -3,6 +3,8 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+//阿里矢量图标
+import './assets/icon/iconfont.css'
 import App from './App'
 import Notification from './components/notification'
 /**

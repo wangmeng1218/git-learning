@@ -8,6 +8,7 @@ import LodashUse from '@/view/lodash-test/lodash-use'
 import LocalforageTest from '@/view/localforage-test/localforage-test'
 import DynamicComponent from '@/view/element-component-test/dynamicComponent'
 import Closure from '@/view/closure/closure'
+import CssBasic from '@/view/css-learning/css-basic'
 
 const routerContext = require.context('./',true,/[a-zA-z\-]*\.vue$/);
 // console.log('require.context.keys()结果');
@@ -23,7 +24,8 @@ let routes = {
   RenderStart,
   TimeLineTest,
   DynamicComponent,
-  Closure
+  Closure,
+  CssBasic
 }
 
 export default routes;

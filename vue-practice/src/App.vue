@@ -41,10 +41,14 @@ export default {
 }
 </script>
 
-<style>
+<style lang="stylus" rel="stylesheet/stylus">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
   -webkit-font-smoothing: antialiased;
+  /*font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
+  /*-webkit-font-smoothing: antialiased;*/
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;

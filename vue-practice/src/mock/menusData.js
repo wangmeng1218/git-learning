@@ -37,12 +37,27 @@ export default {
         {
           path: '/closure',
           name: 'Closure'
+        },
+        {
+          path: '/css-basic',
+          name: 'CssBasic'
         }
       ],
       menuData: [
         {
-          name: '闭包',
+          name: 'CSS',
           index: '1',
+          icon: '',
+          children: [
+            {
+              name: 'Css基础测试',
+              index: 'css-basic'
+            }
+          ]
+        },
+        {
+          name: '闭包',
+          index: '2',
           icon: 'el-icon-magic-stick',
           children: [
             {
@@ -53,7 +68,7 @@ export default {
         },
         {
           name: '组件使用测试',
-          index: '2',
+          index: '3',
           icon: 'el-icon-eleme',
           children: [
             {
@@ -76,7 +91,7 @@ export default {
         },
         {
           name: 'Vue',
-          index: '3',
+          index: '4',
           icon: 'el-icon-thumb',
           children: [
             {
@@ -91,7 +106,7 @@ export default {
         },
         {
           name: '工具测试',
-          index: '4',
+          index: '5',
           icon: 'el-icon-help',
           children: [
             {
