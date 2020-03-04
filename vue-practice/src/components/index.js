@@ -5,6 +5,7 @@ import TimeLineRender from './timelinerender'
 import CusInput from './Form/CusInput'
 import CusFormItem from './Form/FormItem'
 import CusForm from './Form/Form'
+import ExcelTable from './exceltable'
 
 const customizeComponent = {
   install (Vue) {
@@ -14,7 +15,8 @@ const customizeComponent = {
     Vue.component('TimeLineRender', TimeLineRender)
     Vue.component('CusInput', CusInput)
     Vue.component('CusFormItem', CusFormItem)
-    Vue.component('CusForm', CusForm)
+    Vue.component('CusForm', CusForm),
+    Vue.component('ExcelTable', ExcelTable)
   }
 }
 

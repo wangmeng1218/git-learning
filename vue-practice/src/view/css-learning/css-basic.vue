@@ -2,9 +2,10 @@
     <div style="width: 100%; height: 100%;">
       <!--<div style="width: 100%;height: 20px;background-color: transparent;"></div>-->
       <!--<i class="iconfont icon-youting"></i>-->
-      <div ref="InputREF" class="input-border" :class="inputClass">
-        <input @focus="inputFocus" @blur="inputBlur"/><span></span>
-      </div>
+      <!--<div ref="InputREF" class="input-border" :class="inputClass">-->
+        <!--<input @focus="inputFocus" @blur="inputBlur"/><span></span>-->
+      <!--</div>-->
+      <excel-table></excel-table>
     </div>
 </template>
 
@@ -34,7 +35,7 @@
 
 <!--&#xe8ad;-->
 <style lang="stylus">
-  .span-style::before {
+  /*.span-style::before {
     content: '\e8ab';
   }
   .span-style::after {
@@ -61,5 +62,5 @@
   }
   span::after{
     content: '\e62a';
-  }
+  }*/
 </style>
