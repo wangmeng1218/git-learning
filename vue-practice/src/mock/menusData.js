@@ -41,12 +41,35 @@ export default {
         {
           path: '/css-basic',
           name: 'CssBasic'
+        },
+        {
+          path: '/rsa-encrypt',
+          name: 'RSAEncrypt'
+        },
+        {
+          path: '/base64-encrypt',
+          name: 'Base64Encrypt'
         }
       ],
       menuData: [
         {
-          name: 'CSS',
+          name: '加解密',
           index: '1',
+          icon: '',
+          children: [
+            {
+              name: 'RSA非对称加密',
+              index: 'rsa-encrypt'
+            },
+            {
+              name: 'base64加密',
+              index: 'base64-encrypt'
+            }
+          ]
+        },
+        {
+          name: 'CSS',
+          index: '2',
           icon: '',
           children: [
             {
@@ -57,7 +80,7 @@ export default {
         },
         {
           name: '闭包',
-          index: '2',
+          index: '3',
           icon: 'el-icon-magic-stick',
           children: [
             {
@@ -68,7 +91,7 @@ export default {
         },
         {
           name: '组件使用测试',
-          index: '3',
+          index: '4',
           icon: 'el-icon-eleme',
           children: [
             {
@@ -91,7 +114,7 @@ export default {
         },
         {
           name: 'Vue',
-          index: '4',
+          index: '5',
           icon: 'el-icon-thumb',
           children: [
             {
@@ -106,7 +129,7 @@ export default {
         },
         {
           name: '工具测试',
-          index: '5',
+          index: '6',
           icon: 'el-icon-help',
           children: [
             {

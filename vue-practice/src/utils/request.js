@@ -11,6 +11,7 @@ const request = axios.create({
 
 // 添加请求拦截器
 request.interceptors.request.use(function(config){
+  console.log(config);
   // 在发送请求前处理请求数据
   return config;
 }, function (error) {
@@ -23,12 +24,12 @@ request.interceptors.response.use(function(response){
   // 只返回数据
   return response.data;
 },function (error) {
-  const status = error.response.status;
-  if(status >= 500){
-    alert('服务器繁忙，请稍后再试');
-  } else if (status >= 400){
-    alert(error.response.data.message);
-  }
+  // const status = error.response.status;
+  // if(status >= 500){
+  //   alert('服务器繁忙，请稍后再试');
+  // } else if (status >= 400){
+  //   alert(error.response.data.message);
+  // }
 
   // 对响应错误做些什么
   return Promise.reject(error);

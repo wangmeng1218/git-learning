@@ -9,6 +9,8 @@ import LocalforageTest from '@/view/localforage-test/localforage-test'
 import DynamicComponent from '@/view/element-component-test/dynamicComponent'
 import Closure from '@/view/closure/closure'
 import CssBasic from '@/view/css-learning/css-basic'
+import RSAEncrypt from '@/view/encrypt/rsa-encrypt'
+import Base64Encrypt from '@/view/encrypt/base64-encrypt'
 
 const routerContext = require.context('./',true,/[a-zA-z\-]*\.vue$/);
 // console.log('require.context.keys()结果');
@@ -25,7 +27,9 @@ let routes = {
   TimeLineTest,
   DynamicComponent,
   Closure,
-  CssBasic
+  CssBasic,
+  RSAEncrypt,
+  Base64Encrypt
 }
 
 export default routes;

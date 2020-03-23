@@ -22,7 +22,6 @@ export default {
       });
 
       let redirect = data.menuData[0].children ? data.menuData[0].children[0].index : data.menuData[0].index;
-      console.log(redirect);
       let router = {
         alias: '/',
         path: '/home-page',
