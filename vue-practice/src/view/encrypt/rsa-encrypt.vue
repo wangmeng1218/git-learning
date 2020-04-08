@@ -47,18 +47,18 @@
       }
     },
     mounted () {
-      this.afterEncrypt = EncryptECB(this.beforeEncrypt);
-      this.afterDecrypt = DecryptECB(this.afterEncrypt);
+      // this.afterEncrypt = EncryptECB(this.beforeEncrypt);
+      // this.afterDecrypt = DecryptECB(this.afterEncrypt);
       //新建jsencrypt对象
-      // let encryptor = new JSEncrypt();
+      let encryptor = new JSEncrypt();
       // 设置公玥
-      // encryptor.setPublicKey(this.publicKey);
+      encryptor.setPublicKey(this.publicKey);
       //加密
-      // this.afterEncrypt = encryptor.encrypt(this.beforeEncrypt);
+      this.afterEncrypt = encryptor.encrypt(this.beforeEncrypt);
       // 设置私玥
-      // encryptor.setPrivateKey(this.privateKey);
+      encryptor.setPrivateKey(this.privateKey);
       // 解密
-      // this.afterDecrypt = encryptor.decrypt(this.afterEncrypt);
+      this.afterDecrypt = encryptor.decrypt(this.afterEncrypt);
     },
     methods: {
       requestData () {
@@ -77,6 +77,15 @@
         let paramEncrypt = encryptor.encrypt(JSON.stringify(param));
         this.$Post('http://192.168.100.107:3000/encrypt', {data: paramEncrypt}).then(response => {
           console.log(response);
+        });
+        this.$Get('http://192.168.100.107:3000/decrypt').then(response => {
+          //新建jsencrypt对象
+          let decryptor = new JSEncrypt();
+          // 设置私钥
+          decryptor.setPrivateKey(this.privateKey);
+          //解密
+          let data = decryptor.decrypt(response);
+          console.log(data);
         });
       }
     }
