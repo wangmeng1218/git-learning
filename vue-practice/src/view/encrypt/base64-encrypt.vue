@@ -28,6 +28,14 @@
       let Base64 = require('js-base64').Base64;
       this.afterEncrypt = Base64.encode(this.beforeEncrypt);
       this.afterDecrypt = Base64.decode(this.afterEncrypt);
+      this.$Cache.setItem('string','鬼灭之刃');
+      this.$Cache.setItem('arr',[1,3,4]);
+      this.$Cache.setItem('obj',{name: 'levi'});
+      this.$Cache.getItems()['test'] = '啦啦啦';
+      console.log(this.$Cache.getItems());
+      // this.$Cache.removeItem('obj');
+      console.log(this.$Cache.getItems());
+      // this.$Cache.removeItem('test');
     },
     methods: {}
   }

@@ -29,6 +29,18 @@
           label="地址">
         </el-table-column>
       </el-table>
+      <el-form :rules="rules" :model="formData" size="mini">
+        <el-form-item prop="name" label-width="50px" label="姓名">
+          <template v-slot:label>
+            <slot name="label"></slot>
+          </template>
+          <template v-slot:error="error">
+            <!--<h1>{{error.error}}</h1>-->
+            <slot name="error" :error="error.error"></slot>
+          </template>
+         <el-input placeholder="请输入" v-model="formData.name"></el-input>
+        </el-form-item>
+      </el-form>
     </div>
 </template>
 
@@ -36,7 +48,12 @@
   import XLSX from 'xlsx';
   export default {
     name: "exceltable",
-    props: {},
+    props: {
+      formData: {
+        type: Object,
+        default: {}
+      }
+    },
     data () {
       return {
         outputData: [],
@@ -45,6 +62,9 @@
           name: '姓名',
           age: '年龄',
           address: '地址'
+        },
+        rules: {
+          name: [{ required: true, message: '请输入姓名', trigger: 'blur' }]
         }
       }
     },

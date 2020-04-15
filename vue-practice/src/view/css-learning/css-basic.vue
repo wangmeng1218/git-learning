@@ -5,7 +5,23 @@
       <!--<div ref="InputREF" class="input-border" :class="inputClass">-->
         <!--<input @focus="inputFocus" @blur="inputBlur"/><span></span>-->
       <!--</div>-->
-      <excel-table></excel-table>
+      <excel-table :form-data="formData">
+        <!--<template v-slot:label>-->
+          <!--<span style="color:red;">jdlksfjd</span>-->
+        <!--</template>-->
+        <template v-slot:error="error">
+          <h1>{{error.error}}</h1>
+          <!--<slot name="error" :error="error"></slot>-->
+        </template>
+      </excel-table>
+      <!--<el-form :model="formData">-->
+        <!--<el-form-item prop="name" label-width="50px" label="姓名">-->
+          <!--<template v-slot:label>-->
+            <!--<span style="color:red;">jdlksfjd</span>-->
+          <!--</template>-->
+          <!--<el-input v-model="formData.name"></el-input>-->
+        <!--</el-form-item>-->
+      <!--</el-form>-->
     </div>
 </template>
 
@@ -14,7 +30,11 @@
       name: "css-basic",
       data () {
         return {
-          inputActive: false
+          inputActive: false,
+          formData: {
+            name: 'levi',
+            age: '20'
+          }
         }
       },
       computed: {

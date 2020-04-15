@@ -1,7 +1,7 @@
 <template>
   <div>
     father  {{name}}
-    <child-com v-bind="bindValue" v-on="$listeners"></child-com>
+    <child-com @back="back" v-bind="bindValue" v-on="$listeners"></child-com>
   </div>
 </template>
 
@@ -37,6 +37,11 @@
           console.log('father-com');
           console.log(this.$attrs);
          this.$emit('update:name','sync测试')
+      },
+      methods: {
+        back () {
+          console.log('父组件返回');
+        }
       }
     }
 </script>

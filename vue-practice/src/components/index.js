@@ -6,6 +6,7 @@ import CusInput from './Form/CusInput'
 import CusFormItem from './Form/FormItem'
 import CusForm from './Form/Form'
 import ExcelTable from './exceltable'
+import DynamicForm from './DynamicForm'
 
 const customizeComponent = {
   install (Vue) {
@@ -16,7 +17,8 @@ const customizeComponent = {
     Vue.component('CusInput', CusInput)
     Vue.component('CusFormItem', CusFormItem)
     Vue.component('CusForm', CusForm),
-    Vue.component('ExcelTable', ExcelTable)
+    Vue.component('ExcelTable', ExcelTable),
+    Vue.component('DynamicForm', DynamicForm)
   }
 }
 

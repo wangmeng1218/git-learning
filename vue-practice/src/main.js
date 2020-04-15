@@ -33,6 +33,9 @@ import store from './store'
  */
 import './utils/localCacheUtil'
 
+import { CacheFunction,Cache } from  './utils/cache';
+Vue.prototype.$Cache = Cache;
+
 Vue.config.productionTip = false;
 
 // 判断是否需要mock挡板数据

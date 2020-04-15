@@ -11,7 +11,7 @@
           <span>解密后： {{afterDecrypt}}</span>
         </el-card>
       </el-col>
-      <el-button @click="requestData">请求数据</el-button>
+      <el-button @click="showLoading">请求数据</el-button>
 
       <el-col>
         <el-card>
@@ -32,6 +32,7 @@
   import JSEncrypt from 'jsencrypt/bin/jsencrypt';
   import { EncryptECB } from '../../utils/secret';
   import { DecryptECB } from "../../utils/secret";
+  import Loading from '../../components/Loading/loading';
 
   export default {
     name: "rsa-encrypt",
@@ -61,6 +62,12 @@
       this.afterDecrypt = encryptor.decrypt(this.afterEncrypt);
     },
     methods: {
+      showLoading () {
+        Loading.show();
+        setTimeout(() => {
+          Loading.hide();
+        }, 3000);
+      },
       requestData () {
         // this.$Get('http://192.168.100.107:3000/',{}).then(response => {
         //   console.log(response);
