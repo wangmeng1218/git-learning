@@ -49,17 +49,32 @@
         clearable
         @input="value => inputChange(value,input,'llll')">
       </el-input>
+      <dynamic-form :formData="formData" :formConfigData="formConfigData"></dynamic-form>
+      <el-dialog
+        :modal="false"
+        title="提示"
+        :visible.sync="dialogVisible"
+        width="30%">
+          <span>这是一段信息</span>
+          <span slot="footer" class="dialog-footer">
+            <el-button @click="dialogVisible = false">取 消</el-button>
+            <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+          </span>
+      </el-dialog>
     </div>
 </template>
 
 <script>
   import logo from '../../assets/logo.png'
   import mixin from '../../mixins/mixin'
+  import DynamicComponent from "./dynamicComponent";
   export default {
+    components: {DynamicComponent},
     name: "alert-test",
     mixins: [mixin],
     data () {
       return {
+        dialogVisible:false,
         comment: '',
         logo: logo,
         inputValue: '司施工路口',
@@ -76,6 +91,81 @@
           code: [{ required: true, message: '请输入编号', trigger: 'blur'}],
           number: [{ required: true, message: '请输入数据', trigger: 'blur'}],
           result: [{ required: true, message: '请输入结果', trigger: 'blur'}]
+        },
+        formData: {
+          name: 'bilibili',
+          age: '10',
+          address: '3',
+          country: 'China'
+        },
+        formConfigData: {
+          form: {
+            labelWidth: '80px',
+            labelSuffix: ':',
+            size: 'mini',
+            rules: {
+              name: [{ required:true, message: '请输入姓名', trigger: 'blur'}],
+              age: [{ required:true, message: '请选择年龄', trigger: 'blur'}],
+              country: [{ required:true, message: '请输入国家', trigger: 'blur'}]
+            },
+            layout: {
+              row: {
+                gutter: 30
+              },
+              col: {
+                xs: 24,
+                sm: 12,
+                md: 8,
+                lg: 6
+              }
+            }
+          },
+          formItems: [
+            {
+              prop: 'name',
+              label: '姓名',
+              type: 'input',
+              props: {},
+              attrs: {
+                type: 'textarea',
+                placeholder: '请输入姓名'
+              },
+              on: {
+                focus: this.inputFocus
+              },
+              colLayout: 24
+            },
+            {
+              prop: 'age',
+              label: '年龄',
+              type: 'input',
+              props: {},
+              attrs: {
+                type: 'text',
+                placeholder: '请输入年龄'
+              }
+            },
+            {
+              prop: 'address',
+              label: '地址',
+              type: 'input',
+              props: {},
+              attrs: {
+                type: 'text',
+                placeholder: '请输入地址'
+              }
+            },
+            {
+              prop: 'country',
+              label: '国家',
+              type: 'input',
+              props: {},
+              attrs: {
+                type: 'textarea',
+                placeholder: '请输入国家'
+              }
+            }
+          ]
         }
       }
     },
@@ -96,6 +186,9 @@
       });
     },
     methods: {
+      inputFocus(){
+        this.dialogVisible = true;
+      },
       inputChange(...args){
         console.log(args);
       },
