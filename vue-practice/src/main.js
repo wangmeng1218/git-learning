@@ -7,6 +7,15 @@ import 'element-ui/lib/theme-chalk/index.css'
 import './assets/icon/iconfont.css'
 import App from './App'
 import Notification from './components/notification'
+
+import notificationVue from './components/notification/notification';
+import Loading from './components/Loading/loading-content';
+import tableSelect from './view/dialog-component/tableSelect';
+import Register from './components/dialogRegister';
+Register(Loading);
+Register(notificationVue);
+Register(tableSelect);
+
 /**
  * 创建动态路由
  */

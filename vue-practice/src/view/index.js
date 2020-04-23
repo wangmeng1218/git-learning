@@ -11,7 +11,7 @@ import Closure from '@/view/closure/closure'
 import CssBasic from '@/view/css-learning/css-basic'
 import RSAEncrypt from '@/view/encrypt/rsa-encrypt'
 import Base64Encrypt from '@/view/encrypt/base64-encrypt'
-
+import DialogTest from '@/view/dialog-component/dialogTest'
 const routerContext = require.context('./',true,/[a-zA-z\-]*\.vue$/);
 // console.log('require.context.keys()结果');
 // console.log(routerContext.keys());
@@ -29,7 +29,8 @@ let routes = {
   Closure,
   CssBasic,
   RSAEncrypt,
-  Base64Encrypt
+  Base64Encrypt,
+  DialogTest
 }
 
 export default routes;

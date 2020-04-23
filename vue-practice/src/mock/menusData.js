@@ -49,12 +49,27 @@ export default {
         {
           path: '/base64-encrypt',
           name: 'Base64Encrypt'
+        },
+        {
+          path: '/dialog-test',
+          name: 'DialogTest'
         }
       ],
       menuData: [
         {
-          name: '加解密',
+          name: '弹窗式组件',
           index: '1',
+          icon: '',
+          children: [
+            {
+              name: '弹窗式组件测试',
+              index: 'dialog-test'
+            }
+          ]
+        },
+        {
+          name: '加解密',
+          index: '2',
           icon: '',
           children: [
             {
@@ -69,7 +84,7 @@ export default {
         },
         {
           name: 'CSS',
-          index: '2',
+          index: '3',
           icon: '',
           children: [
             {
@@ -80,7 +95,7 @@ export default {
         },
         {
           name: '闭包',
-          index: '3',
+          index: '4',
           icon: 'el-icon-magic-stick',
           children: [
             {
@@ -91,7 +106,7 @@ export default {
         },
         {
           name: '组件使用测试',
-          index: '4',
+          index: '5',
           icon: 'el-icon-eleme',
           children: [
             {
@@ -114,7 +129,7 @@ export default {
         },
         {
           name: 'Vue',
-          index: '5',
+          index: '6',
           icon: 'el-icon-thumb',
           children: [
             {
@@ -129,7 +144,7 @@ export default {
         },
         {
           name: '工具测试',
-          index: '6',
+          index: '7',
           icon: 'el-icon-help',
           children: [
             {

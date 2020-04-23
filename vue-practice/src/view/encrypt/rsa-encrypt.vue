@@ -1,5 +1,8 @@
 <template>
     <div>
+      <el-button @click="showLoading">showLoading</el-button>
+      <!--<el-button @click="closeLoading">closeLoading</el-button>-->
+      <el-button @click="shownotification">shownotification</el-button>
       <el-col>
         <el-card>
           <span>加密前：{{beforeEncrypt}}</span>
@@ -11,7 +14,7 @@
           <span>解密后： {{afterDecrypt}}</span>
         </el-card>
       </el-col>
-      <el-button @click="showLoading">请求数据</el-button>
+      <!--<el-button @click="showLoading">请求数据</el-button>-->
 
       <el-col>
         <el-card>
@@ -24,6 +27,7 @@
           <span>解密后： {{afterDecrypt}}</span>
         </el-card>
       </el-col>
+      <div style="width: 100%;height: 400px;position: relative;" ref="mountNode"></div>
     </div>
 </template>
 
@@ -32,7 +36,7 @@
   import JSEncrypt from 'jsencrypt/bin/jsencrypt';
   import { EncryptECB } from '../../utils/secret';
   import { DecryptECB } from "../../utils/secret";
-  import Loading from '../../components/Loading/loading';
+  // import Loading from '../../components/Loading/loading';
 
   export default {
     name: "rsa-encrypt",
@@ -62,11 +66,34 @@
       this.afterDecrypt = encryptor.decrypt(this.afterEncrypt);
     },
     methods: {
+      notify () {
+        this.num ++;
+        this.$notify({
+          content: `test notify ${this.num}`,
+          btn: 'close'
+        });
+      },
+      shownotification () {
+        this.$notification.show({
+          // mountNode:this.$refs.mountNode
+          content: '提醒'
+        },function (data) {
+          console.log('loadingData' + data);
+        });
+      },
       showLoading () {
-        Loading.show();
-        setTimeout(() => {
-          Loading.hide();
-        }, 3000);
+        this.$LoadingContent.show({
+          mountNode:this.$refs.mountNode,
+          testData: '2342342'
+        },function (data) {
+          console.log('loadingData' + data);
+        });
+        // setTimeout(() => {
+        //   Loading.hide();
+        // }, 3000);
+      },
+      closeLoading () {
+        this.$LoadingContent.hide();
       },
       requestData () {
         // this.$Get('http://192.168.100.107:3000/',{}).then(response => {

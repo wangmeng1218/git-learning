@@ -22,6 +22,14 @@
           <!--<el-input v-model="formData.name"></el-input>-->
         <!--</el-form-item>-->
       <!--</el-form>-->
+      <el-input
+        type="text"
+        placeholder="请输入内容"
+        v-model="formData.name"
+        tabindex="-1"
+        suffix-icon="el-icon-arrow-up"
+        size="medium">
+      </el-input>
     </div>
 </template>
 
