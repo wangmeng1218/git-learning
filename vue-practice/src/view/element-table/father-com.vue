@@ -34,13 +34,17 @@
         }
       },
       mounted(){
-          console.log('father-com');
-          console.log(this.$attrs);
-         this.$emit('update:name','sync测试')
+        this.$on('fatherTest',() => {
+        });
+        console.log('father-com');
+        console.log(this.$attrs);
+        this.$emit('update:name','sync测试');
+        console.log('打印$listeners');
+        console.log(this.$listeners);
       },
       methods: {
-        back () {
-          console.log('父组件返回');
+        back (data1, data2) {
+          console.log(data1,data2);
         }
       }
     }

@@ -1,5 +1,5 @@
 <template>
-  <div style="background-color: #fff;width: 600px;">
+  <div style="background-color: #fff;width: 600px;" ref="TABLEREF">
     <el-table
       :data="tableData"
       highlight-current-row
@@ -24,7 +24,7 @@
         label="地址">
       </el-table-column>
     </el-table>
-    <div style="margin-top: 20px;margin-bottom: 20px;">
+    <div style="margin: 20px auto;">
       <el-button @click="handleConfirm">确定</el-button>
       <el-button @click="handleCancel">取消</el-button>
     </div>
@@ -53,12 +53,13 @@
           name: '王小虎',
           address: '上海市普陀区金沙江路 1516 弄'
         }],
-        currentRow: null
+        currentRow: null,
+        message: '啦啦啦'
       }
     },
     methods: {
       handleConfirm () {
-        this.$emit('confirm', this.currentRow);
+        this.$emit('confirm', this.message, this.currentRow);
       },
       handleCancel () {
         this.$emit('close');

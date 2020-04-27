@@ -4,46 +4,51 @@ import ShadowFrame from './shadow-frame';
 import Vue from 'vue';
 const register = function (component) {
   //创建组件的构造方法
-  const Loading = Vue.extend(ShadowFrame);
-  //保存组件实例
-  let instance;
-  //保存挂载点
-  let RootNode;
+  const Shadow = Vue.extend(ShadowFrame);
   //全局添加弹窗组件
   Vue.prototype['$' + component.name] = {
-    show(options,cb){
+    show(options){
       //解构出挂载节点和其他数据，其他数据作为组件的props
-      let { mountNode, ...rest } = options;
+      let { mountNode,on, ...rest } = options;
+      // 获取挂载节点，如果未提供挂载点，使用body
+      const RootNode = mountNode ? mountNode : document.body;
+      //事件监听器
+      let listeners = {};
+      Object.keys(on).forEach(key => {
+        listeners[key] = (...data) => {
+          on[key](...data, () => {
+            this.hide(instance, RootNode);
+          });
+        };
+      });
+      if (!on.close) {
+        //添加默认 关闭事件监听
+        listeners.close = () => {
+          this.hide(instance, RootNode);
+        };
+      }
       // 创建组件实例
-      instance = new Loading({
-        // propsData: options
+      const instance = new Shadow({
+        propsData: {
+          //组件
+          componentName: component,
+          //props
+          componentProps: rest,
+          //监听器
+          componentListeners: listeners
+        }
       }).$mount();
       if (instance.visible) return;
-      // 如果未提供挂载点，使用body
-      RootNode = mountNode ? mountNode : document.body;
       // 将组件实例挂载到指定节点上
       RootNode.appendChild(instance.$el);
       Vue.nextTick(() => {
-        //组件赋值
-        instance.componentName = component;
-        //传递组件props
-        instance.componentProps = rest;
         //显示
         instance.visible = true;
-        //监听组件中的confirm事件，通过回调将数据传递出去并销毁组件实例
-        instance.$on('confirm', (data) => {
-          cb(data);
-          this.hide();
-        });
-        //监听组件的close事件，销毁组件实例
-        instance.$on('close', () => {
-          this.hide();
-        });
       });
     },
     //隐藏销毁组件实例
-    hide(){
-      if (instance) {
+    hide(instance, RootNode){
+      if (instance && instance.visible && instance.$el) {
         Vue.nextTick(() => {
           //设置组件不可见
           instance.visible = false;

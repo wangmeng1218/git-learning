@@ -1,36 +1,46 @@
 <template>
-    <div style="width:100%;height:100%;position: relative;" ref="mountNode">
+    <div style="width:100%;height:100%;position: relative;" ref="FULLPAGE">
       <el-button @click="showLoading">showLoading</el-button>
-      <el-button @click="shownotification">shownotification</el-button>
       <el-button @click="showTable">showTable</el-button>
+      <div style="width:100%;height:calc(100% - 40px);position: relative;" ref="mountNode"></div>
     </div>
 </template>
 
 <script>
   export default {
     name: "dialog-test",
+    data () {
+      return {
+        hide: ''
+      }
+    },
     methods: {
-      shownotification () {
-        this.$notification.show({
-          content: '提示信息'
-        },function (data) {
-          console.log('loadingData' + data);
-        });
-      },
       showLoading () {
         this.$LoadingContent.show({
           mountNode:this.$refs.mountNode,
-          testData: '2342342'
-        },function (data) {
-          console.log('loadingData' + data);
+          testData: '2342342',
+          on: {
+            confirm: this.confirmMethod
+          }
         });
       },
       showTable () {
         this.$tableSelect.show({
-          mountNode:this.$refs.mountNode
-        },function(data){
-          console.log(data);
-        })
+          mountNode:this.$refs.mountNode,
+          on: {
+            confirm: this.confirmMethod,
+            close: this.closeMethod
+          }
+        });
+      },
+      confirmMethod (data1, data2, hide) {
+        console.log(data1);
+        console.log(data2);
+        hide();
+      },
+      closeMethod (hide) {
+        console.log('closeMethod');
+        hide();
       }
     }
   }

@@ -19,7 +19,7 @@
       },
       methods:{
           handleClick(){
-            this.$emit('back', 'grand-grand-child返回');
+            this.$emit('back', 'grand-grand-child返回','测试测试');
           }
       }
     }

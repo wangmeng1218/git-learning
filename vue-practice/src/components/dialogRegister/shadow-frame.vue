@@ -1,32 +1,30 @@
 <template>
-  <div v-show="visible" class="loading-show">
-    <div class="cover"></div>
-    <div class="modal">
-      <component v-bind="componentProps" :is="componentName" @close="dialogClose" @confirm="dialogConfirm"></component>
+  <transition name="fade">
+    <div v-show="visible" class="loading-show">
+      <div class="cover"></div>
+      <div class="modal">
+        <component v-bind="componentProps" :is="componentName" v-on="componentListeners"></component>
+      </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
   export default {
     name: "shadow-frame",
-    inheritAttrs: false,
-    props: {},
+    props: {
+      componentName: {
+        required: true
+      },
+      componentProps: Object,
+      componentListeners: Object
+    },
     data () {
       return {
-        visible: false,
-        componentName: '',
-        componentProps: {}
+        visible: false
       }
     },
-    methods: {
-      dialogConfirm (data) {
-        this.$emit('confirm', data);
-      },
-      dialogClose () {
-        this.$emit('close');
-      }
-    },
+    methods: {},
     mounted () {}
   }
 </script>
@@ -53,5 +51,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
   }
 </style>
