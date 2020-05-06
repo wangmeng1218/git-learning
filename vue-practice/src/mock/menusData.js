@@ -53,12 +53,43 @@ export default {
         {
           path: '/dialog-test',
           name: 'DialogTest'
+        },
+        {
+          path: '/table-test',
+          name: 'TableTest'
+        },
+        {
+          path: '/grid-test',
+          name: 'GridTest'
+        },
+        {
+          path: '/grid-only',
+          name: 'GridOnly'
         }
       ],
       menuData: [
         {
-          name: '弹窗式组件',
+          name: 'vxe-table',
           index: '1',
+          icon: '',
+          children: [
+            {
+              name: '按需引入高级表格',
+              index: 'grid-only'
+            },
+            {
+              name: '表格',
+              index: 'table-test'
+            },
+            {
+              name: '高级表格',
+              index: 'grid-test'
+            }
+          ]
+        },
+        {
+          name: '弹窗式组件',
+          index: '2',
           icon: '',
           children: [
             {
@@ -69,7 +100,7 @@ export default {
         },
         {
           name: '加解密',
-          index: '2',
+          index: '3',
           icon: '',
           children: [
             {
@@ -84,7 +115,7 @@ export default {
         },
         {
           name: 'CSS',
-          index: '3',
+          index: '4',
           icon: '',
           children: [
             {
@@ -95,7 +126,7 @@ export default {
         },
         {
           name: '闭包',
-          index: '4',
+          index: '5',
           icon: 'el-icon-magic-stick',
           children: [
             {
@@ -106,7 +137,7 @@ export default {
         },
         {
           name: '组件使用测试',
-          index: '5',
+          index: '6',
           icon: 'el-icon-eleme',
           children: [
             {
@@ -129,7 +160,7 @@ export default {
         },
         {
           name: 'Vue',
-          index: '6',
+          index: '7',
           icon: 'el-icon-thumb',
           children: [
             {
@@ -144,7 +175,7 @@ export default {
         },
         {
           name: '工具测试',
-          index: '7',
+          index: '8',
           icon: 'el-icon-help',
           children: [
             {
