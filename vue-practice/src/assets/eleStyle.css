@@ -1,0 +1,255 @@
+/*
+小号按钮样式
+*/
+.el-button--xmini {
+  font-size: 12px;
+}
+.el-button--xmini,.el-button--xmini.is-round{
+  padding: 3px 6px;
+}
+.el-button--xmini+.el-button--xmini {
+  margin-left: 6px;
+}
+
+/*
+单选框
+*/
+.el-radio__input.is-checked .el-radio__inner {
+  background: #fff;
+  background-color: #fff;
+}
+.el-radio {
+  margin-right: 16px;
+}
+.el-radio__inner::after {
+  background-color: #409EFF;
+  width: 8px;
+  height: 8px;
+}
+/*
+复选框
+*/
+.el-checkbox__inner::after {
+  height: 6.32px;
+}
+.el-checkbox {
+  margin-right: 16px;
+}
+.el-checkbox:last-of-type {
+  margin-right: 0;
+}
+/*
+mini   input输入框
+*/
+.el-input--mini .el-input__inner {
+  padding: 0 10px;
+  border-radius: 3px;
+}
+
+/*
+表单
+*/
+.el-form-item__content {
+  padding-left: 4px;
+}
+.el-form--label-top .el-form-item__label {
+  height: 22px;
+  line-height: 22px;
+  padding-left: 6px;
+  padding-bottom: 0;
+}
+/*
+mini inputNumber计数器
+*/
+.el-input-number--mini .el-input-number__decrease [class*=el-icon], .el-input-number--mini .el-input-number__increase [class*=el-icon] {
+  width: 12px;
+  margin: 0 10px;
+}
+.el-input-number--mini .el-input-number__decrease, .el-input-number--mini .el-input-number__increase {
+  width: 32px;
+}
+
+/*
+各个尺寸的Select选择器
+*/
+.el-popper[x-placement^=bottom] {
+  margin-top: 6px;
+}
+.el-popper[x-placement^=top] {
+  margin-bottom: 6px;
+}
+.el-select-dropdown__list {
+  padding: 4px;
+}
+.el-select-dropdown__item {
+  height: 28px;
+  line-height: 28px;
+  padding: 0 10px;
+}
+
+/*
+cascader级联选择器
+*/
+/*下拉内边距4*/
+.el-cascader-menu__list {
+  padding: 4px;
+}
+/*下拉中节点高度28*/
+.el-cascader-node {
+  height: 28px;
+}
+/*节点中箭头距边框6，总体加起来距离下拉边框10*/
+.el-cascader-node__postfix {
+  right: 6px;
+}
+.el-cascader__dropdown {
+  border-radius: 3px;
+}
+.el-cascader__search-input {
+  margin-left: 10px;
+}
+/*多选标签高度28*/
+.el-cascader__tags .el-tag--mini {
+  height: 18px;
+}
+/*多选标签外边距*/
+.el-cascader__tags .el-tag {
+  margin: 2px 0 2px 4px;
+}
+.el-cascader-node.is-selectable {
+  padding: 0 30px 0 6px;
+  height: 28px;
+}
+.el-cascader-node.is-selectable:first-child{
+  margin-top: 2px;
+}
+.el-cascader-node.is-selectable:last-child {
+  margin-bottom: 2px;
+}
+.is-selectable .el-cascader-node__label {
+  padding-left: 4px;
+}
+.el-cascader.el-cascader--mini .el-input .el-input__inner {
+  padding-right: 25px;
+}
+
+/*Switch开关*/
+/*左边文字距离开关6*/
+.el-switch__label--left {
+  margin-right: 6px;
+}
+/*右边文字距离开关6*/
+.el-switch__label--right {
+  margin-left: 6px;
+}
+/*开关宽度*/
+.el-switch__core {
+  width: 24px !important;
+  height: 12px;
+}
+.el-switch__core:after {
+  width: 8px;
+  height: 8px;
+  left: 2px;
+}
+.el-switch.is-checked .el-switch__core::after {
+  margin-left: -10px;
+}
+/*mini  timepicker*/
+.el-date-editor.el-date-editor--time-select.el-input--prefix.el-input--mini .el-input__inner {
+  padding-left: 28px;
+}
+/*.el-date-editor.el-input.el-input--mini.el-input--prefix.el-input--suffix.el-date-editor--time-select .el-input__prefix {*/
+  /*left: 3.5px;*/
+/*}*/
+/*.time-select-item {*/
+  /*padding: 0 10px;*/
+  /*height: 28px;*/
+  /*line-height: 28px;*/
+/*}*/
+/*.time-select-item:first-child {*/
+  /*margin-top: 2px;*/
+/*}*/
+/*.time-select-item:last-child {*/
+  /*margin-bottom: 2px;*/
+/*}*/
+.el-date-editor.el-date-editor--time.el-input--prefix.el-input--mini .el-input__inner {
+  padding-left: 28px;
+}
+/*.el-date-editor.el-input.el-input--mini.el-input--prefix.el-input--suffix.el-date-editor--time .el-input__prefix {*/
+  /*left: 3.5px;*/
+/*}*/
+/*.el-time-panel__footer {*/
+  /*padding: 0;*/
+  /*line-height: 36px;*/
+/*}*/
+/*mini 小号表格*/
+.el-table--mini .el-table__expanded-cell {
+  padding: 10px 50px;
+}
+.el-table--mini .el-table .cell {
+  line-height: 19px;
+}
+.el-table--mini td,.el-table--mini th {
+  padding: 4px 0;
+}
+.el-table--mini td .cell{
+  height: 21px;
+  line-height: 22px;
+}
+.el-table--mini th .cell {
+  height: 23px;
+  line-height: 24px;
+}
+
+/*mini  分页pagination*/
+.el-pagination--small button, .el-pagination--small span:not([class*=suffix]) {
+  height: 24px;
+  line-height: 24px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.el-pagination--small .el-pagination__sizes .el-input .el-input__inner {
+  text-align: left;
+  padding-left: 14px;
+  font-size: 12px;
+  font-weight: 500;
+  height: 24px;
+}
+.el-pagination--small .el-pager li, .el-pagination--small .el-pagination__jump .el-input__inner{
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.el-pagination.is-background.el-pagination--small .btn-next, .el-pagination.is-background.el-pagination--small .btn-prev, .el-pagination.is-background.el-pagination--small .el-pager li,.el-pagination--small .el-pagination__editor.el-input .el-input__inner{
+  min-height: 24px;
+}
+
+/*tabs*/
+.el-tabs__item {
+  font-size: 12px;
+  height: 32px;
+}
+
+/*card*/
+.el-card__header {
+  padding: 5px 14px 5px 14px;
+  font-size: 14px;
+}
+.el-card__header>div{
+  min-height: 21px;
+}
+.el-card__body {
+  padding: 6px 14px;
+  font-size: 14px;
+}
+
+/*mini   datetimepicker*/
+.el-date-editor.el-date-editor--datetime.el-input--mini .el-input__inner {
+  padding-left: 28px;
+}
+
+/*popover*/
+.el-popover {
+  font-size: 12px;
+}

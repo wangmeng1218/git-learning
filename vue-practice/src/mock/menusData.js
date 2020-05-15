@@ -65,14 +65,26 @@ export default {
         {
           path: '/grid-only',
           name: 'GridOnly'
+        },
+        {
+          path: '/element-style',
+          name: 'ElementStyle'
+        },
+        {
+          path: '/select-test',
+          name: 'VueTreeSelectPage'
         }
       ],
       menuData: [
         {
-          name: 'vxe-table',
+          name: '组件使用测试',
           index: '1',
           icon: '',
           children: [
+            {
+              name: '树形选择组件',
+              index: 'select-test'
+            },
             {
               name: '按需引入高级表格',
               index: 'grid-only'
@@ -140,6 +152,10 @@ export default {
           index: '6',
           icon: 'el-icon-eleme',
           children: [
+            {
+              name: '修改组件样式',
+              index: 'element-style'
+            },
             {
               name: 'JSONP跨域',
               index: 'alert-test'

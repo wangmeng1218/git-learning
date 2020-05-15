@@ -15,6 +15,8 @@ import DialogTest from '@/view/dialog-component/dialogTest'
 import TableTest from '@/view/vxe-table-test/table-test'
 import GridTest from '@/view/vxe-table-test/grid-test'
 import GridOnly from '@/view/vxe-table-test/grid-only'
+import ElementStyle from '@/view/element-component-test/elementStyle'
+import VueTreeSelectPage from '@/view/vue-tree-select-test/index'
 // const routerContext = require.context('./',true,/[a-zA-z\-]*\.vue$/);
 // console.log('require.context.keys()结果');
 // console.log(routerContext.keys());
@@ -36,7 +38,9 @@ let routes = {
   DialogTest,
   TableTest,
   GridTest,
-  GridOnly
+  GridOnly,
+  ElementStyle,
+  VueTreeSelectPage
 };
 
 export default routes;

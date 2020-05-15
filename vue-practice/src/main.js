@@ -3,6 +3,10 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 import XEUtils from 'xe-utils'
+// import the component
+import Treeselect from '@riophae/vue-treeselect'
+// import the styles
+import '@riophae/vue-treeselect/dist/vue-treeselect.css'
 // import { VXETable, Table, Grid, Edit, Header, Filter, Select } from 'vxe-table'
 import VXETable from 'vxe-table'
 import i18n from './i18n'
@@ -111,6 +115,7 @@ Vue.prototype.$XModal = VXETable.modal;
 Vue.use(Notification);
 // 全局使用自定义组件
 Vue.use(customizeComponent);
+Vue.component('TreeSelect', Treeselect)
 /* eslint-disable no-new */
 let router = createRouter([]);
 /**
