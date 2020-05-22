@@ -18,7 +18,7 @@
         width="200"
         trigger="click"
         content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。">
-        <el-button slot="reference">hover 激活</el-button>
+        <el-button slot="reference">click 激活</el-button>
       </el-popover>
       <div style="text-align: left;">
         <el-card>

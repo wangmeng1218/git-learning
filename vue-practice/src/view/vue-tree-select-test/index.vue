@@ -2,11 +2,11 @@
     <div>
       <TreeSelect :limit="3" :limitText="limitText" :flat="true" :allowClearingDisabled="true" :normalizer="normalizer" :showCount="true" :value="value" :searchable="true" :multiple="true" :options="options">
         <div slot="value-label" slot-scope="{ node }">
-        <span style="color:red;">{{node.raw.id}}</span>
+          <span style="color:red;">{{node.raw.id}}</span>
         </div>
         <label slot="option-label" slot-scope="{ node, shouldShowCount, count, labelClassName, countClassName }" :class="labelClassName">
-        {{ node.isBranch ? 'Branch' : 'Leaf' }}: {{ node.label }}
-        <span v-if="shouldShowCount" :class="countClassName">({{ count }})</span>
+          {{ node.isBranch ? 'Branch' : 'Leaf' }}: {{ node.label }}
+          <span v-if="shouldShowCount" :class="countClassName">({{ count }})</span>
         </label>
       </TreeSelect>
       <TreeSelect
@@ -16,8 +16,17 @@
         :multiple="true"
         placeholder="Open the menu..."
       />
+      <el-select v-model="selectValue" placeholder="请选择">
+        <el-option
+          v-for="item in selectOptions"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+        </el-option>
+      </el-select>
       <TreeSelect :value="singleValue" :searchable="true" :options="optionsEmpty">
       </TreeSelect>
+      <div id="vue-treeselect-container" style="display: inline-block;width:60px;height: 30px;background-color: #409EFF;" @mousedown ="divClicked">xxxxx</div>
     </div>
 </template>
 
@@ -26,6 +35,23 @@
       name: "index",
       data () {
           return {
+            selectOptions: [{
+              value: '选项1',
+              label: '黄金糕'
+            }, {
+              value: '选项2',
+              label: '双皮奶'
+            }, {
+              value: '选项3',
+              label: '蚵仔煎'
+            }, {
+              value: '选项4',
+              label: '龙须面'
+            }, {
+              value: '选项5',
+              label: '北京烤鸭'
+            }],
+            selectValue: '',
             singleValue: null,
             // define the default value
             value: [],
@@ -73,6 +99,11 @@
             label: `option-${id}`,
           }));
         }
+      },
+      divClicked (event) {
+        event.stopPropagation();
+        event.preventDefault();
+        // console.log('divClickeddivClicked');
       }
     }
     }

@@ -207,7 +207,7 @@
         return elm
       },
       containerClicked () {
-        // console.log('点击事件');
+        console.log('点击事件');
       },
       testMixin () {
         console.log('组件testMixin');
