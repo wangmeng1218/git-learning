@@ -59,7 +59,8 @@
           {
             title: 'table.title.name',
             field: 'name',
-            editRender: { name: 'input' }
+            editRender: { name: 'input' },
+            cellRender: { name: 'cellDefaultRender' }
           },
           {
             title: 'table.title.age',

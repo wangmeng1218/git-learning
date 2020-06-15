@@ -17,6 +17,8 @@ import GridTest from '@/view/vxe-table-test/grid-test'
 import GridOnly from '@/view/vxe-table-test/grid-only'
 import ElementStyle from '@/view/element-component-test/elementStyle'
 import VueTreeSelectPage from '@/view/vue-tree-select-test/index'
+import ReserveTest from '@/view/vxe-table-test/reverse-test'
+import SortExamples from '@/view/sortable-test/examples'
 // const routerContext = require.context('./',true,/[a-zA-z\-]*\.vue$/);
 // console.log('require.context.keys()结果');
 // console.log(routerContext.keys());
@@ -40,7 +42,9 @@ let routes = {
   GridTest,
   GridOnly,
   ElementStyle,
-  VueTreeSelectPage
+  VueTreeSelectPage,
+  ReserveTest,
+  SortExamples
 };
 
 export default routes;

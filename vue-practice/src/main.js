@@ -2,42 +2,13 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import ElementUI from 'element-ui'
-import XEUtils from 'xe-utils'
 // import the component
 import Treeselect from './treeSelect'
 // import the styles
 import './treeSelect/vue-treeselect.css'
-// import { VXETable, Table, Grid, Edit, Header, Filter, Select } from 'vxe-table'
-import VXETable from 'vxe-table'
 import i18n from './i18n'
-VXETable.renderer.add('MyExpand', {
-  renderExpand (h, renderOpts, params) {
-    let { row,rowIndex,column,columnIndex,$table } = params;
-    // console.log(row);
-    // console.log($table);
-    console.log(renderOpts);
-    let listeners = {};
-    Object.keys(renderOpts.events).forEach(key => {
-      let val = renderOpts.events[key];
-      if (typeof val === 'function') {
-        const uniformItem = key.replace(/([A-Z])/g, '-$1').toLowerCase();
-        listeners[uniformItem] = val;
-      }
-    });
-    return h(
-      'vxe-grid',
-      {
-        props: renderOpts.props,
-        attrs: renderOpts.attrs,
-        on: listeners
-      }
-    );
-  }
-});
 
 
-
-import 'vxe-table/lib/index.css'
 import 'element-ui/lib/theme-chalk/index.css'
 //阿里矢量图标
 import './assets/icon/iconfont.css'
@@ -52,6 +23,7 @@ Register(Loading);
 Register(notificationVue);
 Register(tableSelect);
 
+import './vxeTable/index'
 /**
  * 创建动态路由
  */
@@ -94,24 +66,12 @@ Vue.prototype.$Utils = Utils;
 Vue.prototype.$Get = get;
 // 将Post请求对象挂在到Vue实例上
 Vue.prototype.$Post = post;
-Vue.prototype.$XEUtils = XEUtils;
+
+
 
 // 全局使用ElementUI
 Vue.use(ElementUI);
-// Vue.use(Grid)
-// Vue.use(Edit)
-// Vue.use(Header)
-// Vue.use(Filter)
-// Vue.use(Select)
-// Vue.use(Table)
-Vue.use(VXETable,{
-  translate: key => i18n.t(key),
-  //集成vue-i18n
-  i18n: key => i18n.t(key)
-});
 
-//给vue实例挂载全局窗口对象
-Vue.prototype.$XModal = VXETable.modal;
 Vue.use(Notification);
 // 全局使用自定义组件
 Vue.use(customizeComponent);

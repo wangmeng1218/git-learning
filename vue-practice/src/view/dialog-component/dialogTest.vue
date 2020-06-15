@@ -3,12 +3,10 @@
       <el-button @click="showLoading">showLoading</el-button>
       <el-button @click="showTable">showTable</el-button>
       <div style="width:100%;height:calc(100% - 40px);position: relative;" ref="mountNode"></div>
-
     </div>
 </template>
 
 <script>
-  import { LOAD_ROOT_OPTIONS } from '@riophae/vue-treeselect';
   export default {
     name: "dialog-test",
     data () {

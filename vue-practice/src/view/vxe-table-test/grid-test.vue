@@ -13,12 +13,15 @@
       height="650"
       :loading="tableLoading"
       :columns="tableColumn"
+      row-id="id"
       :data.sync="tableData"
       :params="childrenParams"
       :pager-config="pagerConfig"
       @page-change="handlePageChange"
       :edit-config="editConfig"
+      :checkbox-config="{reserve: true, highlight: true}"
       :toolbar="tableToolbar"
+      :expand-config="expandConfig"
       :context-menu="tableMenu"
       @context-menu-click="handleContextMenuClick">
       <!--<template v-slot:expand_content="{ row,rowIndex,column,columnIndex }">-->
@@ -78,6 +81,9 @@
           layouts: ['Sizes', 'PrevJump', 'PrevPage', 'Number', 'NextPage', 'NextJump', 'FullJump', 'Total'],
           perfect: true
         },
+        expandConfig: {
+          // labelField: 'name'
+        },
         childrenParams: {
           columnData: [],
           interface: ''
@@ -92,6 +98,7 @@
             field: 'age'
           }
         ],
+        showHelpTip2: false,
         childData: [
           {
             name: 'levi',
@@ -105,6 +112,37 @@
         tableColumn: [
           //{ type: 'expand', width: 60 , slots: {content: this.expandTable}},
           // { type: 'expand', width: 60 , slots: {content: 'expand_content'}},
+          {
+            width: 60,
+            slots: {
+              default: () => {
+                return [
+                  <span class="drag-btn">
+                  <i class="vxe-icon--menu"></i>
+                  </span>
+              ]
+              },
+              header: () => {
+                return [
+                  <vxe-tooltip v-model={ this.showHelpTip2 } content="按住后可以上下拖动排序！" enterable>
+                    <i class="vxe-icon--question" onClick={ () => { this.showHelpTip2 = !this.showHelpTip2 } }></i>
+                  </vxe-tooltip>
+              ]
+              }
+            }
+          },
+          {
+            type: 'checkbox',
+            width: '55'
+          },
+          {
+            title: 'ID',
+            field: 'id',
+            cellRender:
+              {
+                name: 'cellDefaultRender'
+              }
+          },
           {
             type: 'expand',
             width: 60 ,
@@ -148,7 +186,7 @@
             title: '基本信息',
             children: [
               { field: 'name', title: 'table.title.name',editRender: {name: '$input'}},
-              { field: 'sex', title: 'table.title.sex' }
+              { field: 'sex', title: 'table.title.sex', formatter: 'SexFormatter' }
             ]
           },
           {
@@ -158,7 +196,13 @@
               { field: 'date', title: 'Date' }
             ]
           },
-          { field: 'operate', title: '操作', slots: {default: 'operate_column'}}
+          {
+            field: 'operate',
+            title: '操作',
+            width: 300,
+            cellRender: { name: 'ElRate', type: 'visible' }
+          }
+          // { field: 'operate', title: '操作', width: 300, slots: {default: 'operate_column'}}
         ],
         tableData: [],
         allAlign: null,
@@ -191,26 +235,7 @@
       }
     },
     created () {
-      let list = [];
-      for(let index = 0; index < 20; index++){
-        list.push({
-          id: index + 10000,
-          checked: false,
-          name: 'test' + index,
-          role: 'developer',
-          sex: 'Man',
-          date: '2019-05-01',
-          time: 1556677810888 + index * 500,
-          region: 'ShenZhen',
-          address: 'address abc' + index
-        })
-      }
-      this.tableData = list;
-      this.tableLoading = true;
-      let self = this;
-      setTimeout(function(){
-        self.tableLoading = false;
-      },3000);
+      this.queryTableData(1);
     },
     methods: {
       handleContextMenuClick ({ menu, type, row, rowIndex, column, columnIndex, $event }) {
@@ -227,17 +252,32 @@
             break;
         }
       },
-      queryTableData () {
+      queryTableData (currentPage) {
         this.tableLoading = true;
         let self = this;
         setTimeout(function(){
+          self.tableData = [];
+          for(let index = 0; index < 10; index++){
+            self.tableData.push({
+              id: currentPage * 10 + index + 10000,
+              checked: false,
+              name: 'test' + (currentPage * 10 + index),
+              role: 'developer',
+              sex: 'Man',
+              date: '2019-05-01',
+              time: 1556677810888 + (currentPage * 10 + index) * 500,
+              region: 'ShenZhen',
+              address: 'address abc' + (currentPage * 10 + index)
+            })
+          }
           self.tableLoading = false;
         },1000);
       },
       handlePageChange ({ type, currentPage, pageSize }) {
         this.pagerConfig.currentPage = currentPage;
         this.pagerConfig.pageSize = pageSize;
-        this.queryTableData();
+        console.log(this.pagerConfig);
+        this.queryTableData(currentPage);
       },
       editRow (row) {
         // this.$refs['GRIDRef'].readFile({
@@ -318,5 +358,12 @@
 </script>
 
 <style scoped>
-
+  .sortable-tree-demo .drag-btn {
+    cursor: move;
+    font-size: 12px;
+  }
+  .sortable-tree-demo .vxe-body--row.sortable-ghost,
+  .sortable-tree-demo .vxe-body--row.sortable-chosen {
+    background-color: #dfecfb;
+  }
 </style>

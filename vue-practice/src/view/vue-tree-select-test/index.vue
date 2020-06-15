@@ -51,10 +51,10 @@
               value: '选项5',
               label: '北京烤鸭'
             }],
-            selectValue: '',
+            selectValue: '选项3',
             singleValue: null,
             // define the default value
-            value: [],
+            value: ['aa', 'ab'],
             optionsEmpty: [],
             options1: null,
             // define options

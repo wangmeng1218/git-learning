@@ -73,12 +73,31 @@ export default {
         {
           path: '/select-test',
           name: 'VueTreeSelectPage'
+        },
+        {
+          path: '/reserve-test',
+          name: 'ReserveTest'
+        },
+        {
+          path: '/examples',
+          name: 'SortExamples'
         }
       ],
       menuData: [
         {
-          name: '组件使用测试',
+          name: 'SortableJs',
           index: '1',
+          icon: '',
+          children: [
+            {
+              name: 'sortableJs例子',
+              index: 'examples'
+            }
+          ]
+        },
+        {
+          name: '组件使用测试',
+          index: '2',
           icon: '',
           children: [
             {
@@ -96,12 +115,16 @@ export default {
             {
               name: '高级表格',
               index: 'grid-test'
+            },
+            {
+              name: 'reserve测试',
+              index: 'reserve-test'
             }
           ]
         },
         {
           name: '弹窗式组件',
-          index: '2',
+          index: '3',
           icon: '',
           children: [
             {
@@ -112,7 +135,7 @@ export default {
         },
         {
           name: '加解密',
-          index: '3',
+          index: '4',
           icon: '',
           children: [
             {
@@ -127,7 +150,7 @@ export default {
         },
         {
           name: 'CSS',
-          index: '4',
+          index: '5',
           icon: '',
           children: [
             {
@@ -138,7 +161,7 @@ export default {
         },
         {
           name: '闭包',
-          index: '5',
+          index: '6',
           icon: 'el-icon-magic-stick',
           children: [
             {
@@ -149,7 +172,7 @@ export default {
         },
         {
           name: '组件使用测试',
-          index: '6',
+          index: '7',
           icon: 'el-icon-eleme',
           children: [
             {
@@ -176,7 +199,7 @@ export default {
         },
         {
           name: 'Vue',
-          index: '7',
+          index: '8',
           icon: 'el-icon-thumb',
           children: [
             {
@@ -191,7 +214,7 @@ export default {
         },
         {
           name: '工具测试',
-          index: '8',
+          index: '9',
           icon: 'el-icon-help',
           children: [
             {
