@@ -19,7 +19,7 @@ Router.prototype.push = function push(location){
 // import LodashUse from '@/view/lodash-test/lodash-use'
 Vue.use(Router);
 
-export const createRouter = (routes) => {
+export const createRouter = (routes, store) => {
     let router = new Router({
       routes
       /*routes: [
@@ -61,6 +61,8 @@ export const createRouter = (routes) => {
     });
     // 路由跳转后执行
     router.afterEach((to, from) => {
+      console.log(to);
+      store.commit('menu/setActivedMenu',to);
       // console.log('路由跳转后');
     });
     return router;

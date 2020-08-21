@@ -186,7 +186,7 @@
             title: '基本信息',
             children: [
               { field: 'name', title: 'table.title.name',editRender: {name: '$input'}},
-              { field: 'sex', title: 'table.title.sex', formatter: 'SexFormatter' }
+              { field: 'sex.sexValue', title: 'table.title.sex', formatter: 'SexFormatter' }
             ]
           },
           {
@@ -263,7 +263,9 @@
               checked: false,
               name: 'test' + (currentPage * 10 + index),
               role: 'developer',
-              sex: 'Man',
+              sex: {
+                sexValue: 'Man'
+              },
               date: '2019-05-01',
               time: 1556677810888 + (currentPage * 10 + index) * 500,
               region: 'ShenZhen',
@@ -271,7 +273,7 @@
             })
           }
           self.tableLoading = false;
-        },1000);
+        },100);
       },
       handlePageChange ({ type, currentPage, pageSize }) {
         this.pagerConfig.currentPage = currentPage;

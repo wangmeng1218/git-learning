@@ -101,7 +101,7 @@ export default {
           icon: '',
           children: [
             {
-              name: '树形选择组件',
+              name: '树形选择/模态弹窗',
               index: 'select-test'
             },
             {

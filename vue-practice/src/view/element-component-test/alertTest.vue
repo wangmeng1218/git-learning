@@ -78,13 +78,6 @@
         comment: '',
         logo: logo,
         inputValue: '司施工路口',
-        formData: {
-          type: '',
-          code: '',
-          number: '',
-          result: '',
-          remark: ''
-        },
         input: 'input',
         formRules: {
           type: [{ required: true, message: '请输入类型', trigger: 'blur'}],

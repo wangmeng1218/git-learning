@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
-
 // 表格组件的语言包
 import tableENUS from 'vxe-table/lib/locale/lang/en-US'
 import tableZHCN from 'vxe-table/lib/locale/lang/zh-CN'
@@ -12,7 +11,7 @@ import myZHTC from './lang/zh-TC'
 
 Vue.use(VueI18n)
 const i18n = new VueI18n({
-  locale: 'en_US',
+  locale: 'zh_CN',
   messages: {
     en_US: {
       ...tableENUS,

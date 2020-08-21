@@ -74,10 +74,12 @@ Vue.use(ElementUI);
 
 Vue.use(Notification);
 // 全局使用自定义组件
-Vue.use(customizeComponent);
+Vue.use(customizeComponent, {
+  contentId: 'page-content'
+});
 Vue.component('TreeSelect', Treeselect)
 /* eslint-disable no-new */
-let router = createRouter([]);
+let router = createRouter([], store);
 /**
 * 初始化new Vue创建Vue实例
 * 通过$mount挂载组件

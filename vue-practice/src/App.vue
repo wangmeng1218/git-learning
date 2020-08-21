@@ -20,7 +20,6 @@ export default {
       data.routerData.forEach((value,index) => {
         value['component'] = views[value.name]
       });
-
       let redirect = data.menuData[0].children ? data.menuData[0].children[0].index : data.menuData[0].index;
       let router = {
         alias: '/',
@@ -32,8 +31,9 @@ export default {
       };
 
       // 调用addRoutes方法之前，重置当前router对象的matcher属性，防止路由重发添加的错误
-      this.$router.matcher = createRouter([]).matcher;
+      this.$router.matcher = createRouter([], this.$store).matcher;
       this.$router.addRoutes([router]);
+      console.log(data.menuData);
       this.$store.commit('menu/setMenuNav',data.menuData);
     })
   }

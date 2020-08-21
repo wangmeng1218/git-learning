@@ -18,6 +18,22 @@
       <div class="example--item item3">item3</div>
       <div class="example--item item3">item4</div>
     </div>
+    <el-button @click="showButton = !showButton">自定义指令测试</el-button>
+    <el-button v-cusshow="showButton">自定义show指令</el-button>
+
+    <!--<div style="height: 100px;width: 100%;"></div>-->
+    <!--<el-button @click="ifButton = !ifButton">自定义指令测试</el-button>-->
+    <!--<el-button v-cusif="ifButton">自定义if指令</el-button>-->
+    <!--<div id="example4">-->
+      <!--<vxe-grid-->
+        <!--border-->
+        <!--row-key-->
+        <!--ref="xTable"-->
+        <!--:columns="tableColumn"-->
+        <!--:data="tableTreeData"-->
+        <!--:tree-config="{ children: 'children' }">-->
+      <!--</vxe-grid>-->
+    <!--</div>-->
   </div>
 </template>
 
@@ -26,15 +42,77 @@
   export default {
     name: "examples",
     data () {
-      return {}
+      return {
+        showButton: true,
+        ifButton: true,
+        showHelpTip: false,
+        tableColumn: [
+          // {
+          //   width: 60,
+          //   slots: {
+          //     default: () => {
+          //       return [
+          //         <span class="drag-btn">
+          //           <i class="vxe-icon-menu"></i>
+          //         </span>
+          //       ];
+          //     },
+          //     header: () => {
+          //       return [
+          //         <vxe-tooltip v-model={ this.showHelpTip } content="按住后可以上下拖动排序" enterable>
+          //           <i class="vxe-icon--question" onClick={() => { this.showHelpTip = !this.showHelpTip;] }}></i>
+          //         </vxe-tooltip>
+          //       ];
+          //     }
+          //   }
+          // },
+          // {
+          //   field: 'name',
+          //   title: 'Name',
+          //   treeNode: true
+          // },
+          // {
+          //   field: 'age',
+          //   title: 'Age'
+          // }
+        ],
+        tableTreeData: [
+          {
+            name: '',
+            age: '',
+
+          },
+          {
+            name: '',
+            age: ''
+          },
+          {
+            name: '',
+            age: ''
+          },
+          {
+            name: '',
+            age: ''
+          },
+          {
+            name: '',
+            age: ''
+          },
+          {
+            name: '',
+            age: ''
+          }
+        ]
+      }
     },
     created () {
+      console.log(this.$XEUtils.parseUrl('/api/v1?name=123'));
       this.$nextTick(function () {
-        console.log(document.getElementById('example1'));
         new Sortable(document.getElementById('example1'), {
           animation: 150,
           ghostClass: 'blue-background-class',
           onEnd (event) {
+            // 移动结束
             console.log(event);
           }
         });
@@ -49,6 +127,57 @@
           ghostClass: 'blue-background-class'
         });
       })
+    },
+    directives: {
+      throttle: {
+        bind: (el, binding) => {
+          console.log(binding);
+          let throttleTime = binding.value;
+          if (!throttleTime) {
+            throttleTime = 2000;
+          }
+          let cbFun;
+          el.addEventListener('click', event => {
+            if (!cbFun) {
+              cbFun = setTimeout(() => {
+                cbFun = null;
+              }, throttleTime);
+            } else {
+              event && event.stopImmediatePropagation();
+            }
+          }, true);
+        }
+      },
+      cusshow: {
+        bind: (el, binding) => {
+          el.dataset.displayValue = el.style.display;
+        },
+        update: (el, binding) => {
+          if (!binding.value) {
+            el.style.display = 'none';
+          } else {
+            el.style.display = el.dataset.displayValue;
+          }
+        }
+      },
+      cusif: {
+        inserted: (el, binding) => {
+          el.dataset.parentNode = el.parentNode.appendChild;
+        },
+        update: (el, binding) => {
+          console.log(el.dataset.parentNode);
+          if (!binding.value) {
+            el.parentNode.removeChild(el);
+          } else {
+            el.dataset.parentNode.appendChild(el);
+          }
+        }
+      }
+    },
+    methods: {
+      handleClick () {
+        console.log('click...click...');
+      }
     }
   }
 </script>

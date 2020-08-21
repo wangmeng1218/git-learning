@@ -14,7 +14,7 @@
           </el-menu>
         </el-aside>
         <el-container style="width: 100%;height:100%;">
-          <el-main style="padding:0;">
+          <el-main style="padding:0;position:relative;" id="page-content">
             <router-view/>
           </el-main>
         </el-container>

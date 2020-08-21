@@ -17,5 +17,5 @@ Vue.use(VXETable,{
   i18n: key => i18n.t(key)
 });
 //给vue实例挂载全局窗口对象
-Vue.prototype.$XModal = VXETable.modal;
+// Vue.prototype.$XModal = VXETable.modal;
 Vue.prototype.$XEUtils = XEUtils;
