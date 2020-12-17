@@ -10,10 +10,8 @@
         </label>
       </TreeSelect>
       <TreeSelect
-        :load-options="loadOptions"
         :options="options1"
-        :auto-load-root-options="false"
-        :multiple="true"
+        value="111"
         placeholder="Open the menu..."
       />
       <el-select v-model="selectValue" placeholder="请选择">
@@ -79,7 +77,22 @@
             // define the default value
             value: ['aa', 'ab'],
             optionsEmpty: [],
-            options1: null,
+            options1: [
+              {
+                id: '111',
+                label: '111',
+                children: [
+                  {
+                    id: '222',
+                    label: '222'
+                  }
+                ]
+              },
+              {
+                id: '333',
+                label: '333'
+              }
+            ],
             // define options
             options: [ {
               id: 'a',

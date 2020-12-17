@@ -30,10 +30,24 @@
         suffix-icon="el-icon-arrow-up"
         size="medium">
       </el-input>
+      <table>
+        <tbody>
+          <tr v-for="(item) in content">
+            <td>
+              <img style="width: 1em; height: 1em;vertical-align: middle;" v-if="item.state =='1'" :src="icon1"></img>
+              <img style="width: 1em; height: 1em;vertical-align: middle;" v-else-if="item.state =='2'" :src="icon2"></img>
+              <img style="width: 1em; height: 1em;vertical-align: middle;" v-else-if="item.state =='3'" :src="icon3"></img>
+              <span v-else>{{ item.state }}</span>
+            </td>
+            <td>{{item.name}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 </template>
 
 <script>
+  import logo from '../../assets/logo.png';
     export default {
       name: "css-basic",
       data () {
@@ -42,7 +56,28 @@
           formData: {
             name: 'levi',
             age: '20'
-          }
+          },
+          icon1: logo,
+          icon2: logo,
+          icon3: logo,
+          content: [
+            {
+              state: '1',
+              name: 'xxxx'
+            },
+            {
+              state: '2',
+              name: 'xxxx'
+            },
+            {
+              state: '3',
+              name: 'xxxx'
+            },
+            {
+              state: '4',
+              name: 'xxxx'
+            }
+          ]
         }
       },
       computed: {

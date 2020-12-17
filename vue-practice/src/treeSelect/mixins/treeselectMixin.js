@@ -1767,6 +1767,7 @@ export default {
     },
 
     select(node) {
+      console.log(node);
       if (this.disabled || node.isDisabled) {
         return
       }

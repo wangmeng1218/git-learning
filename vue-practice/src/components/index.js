@@ -7,7 +7,7 @@ import CusFormItem from './Form/FormItem'
 import CusForm from './Form/Form'
 import ExcelTable from './exceltable'
 import DynamicForm from './DynamicForm'
-import VXEModal from './modalDialog/index.js'
+// import VXEModal from './modalDialog/index.js'
 
 const customizeComponent = {
   install (Vue, opts) {
@@ -20,7 +20,7 @@ const customizeComponent = {
     Vue.component('CusForm', CusForm),
     Vue.component('ExcelTable', ExcelTable),
     Vue.component('DynamicForm', DynamicForm)
-    Vue.use(VXEModal, opts)
+    // Vue.use(VXEModal, opts)
   }
 }
 

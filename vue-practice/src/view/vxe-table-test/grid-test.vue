@@ -5,6 +5,13 @@
       <vxe-option value="zh_TC" label="繁體中文"></vxe-option>
       <vxe-option value="en_US" label="英文"></vxe-option>
     </vxe-select>
+    <vxe-radio-group v-model="value3">
+      <vxe-radio label="true" content="HTML"></vxe-radio>
+      <vxe-radio label="false" content="CSS"></vxe-radio>
+      <vxe-radio label="3" content="Javascript"></vxe-radio>
+      <vxe-radio label="4" content="SASS"></vxe-radio>
+      <vxe-radio label="5" content="LESS"></vxe-radio>
+    </vxe-radio-group>
     <vxe-grid
       ref="GRIDRef"
       border
@@ -35,6 +42,9 @@
           <el-button size="mini" type="info" icon="el-icon-message" circle></el-button>
         </el-row>
       </template>
+      <template v-slot:edit-field="{ row,rowIndex,column,columnIndex }">
+        <span>{{row}}</span>
+      </template>
     </vxe-grid>
   </div>
 </template>
@@ -44,6 +54,7 @@
     name: "grid-test",
     data () {
       return {
+        value3: '',
         tableMenu: {
           body: {
             options: [
@@ -193,7 +204,7 @@
             title: '详细信息',
             children: [
               { field: 'time', title: 'Time',editRender: {name: '$input'} },
-              { field: 'date', title: 'Date' }
+              { field: 'date', title: 'Date', editRender: true, slots: { edit: 'edit-field' } }
             ]
           },
           {
