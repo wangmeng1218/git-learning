@@ -35,14 +35,14 @@
         <!--<span>{{row}}</span><br/>-->
         <!--<span>{{rowIndex}}</span>-->
       <!--</template>-->
-      <template v-slot:operate_column="{ row,rowIndex,column,columnIndex }">
+      <template v-slot:operate_column="{ row }">
         <el-row>
           <el-button size="mini" type="primary" icon="el-icon-edit" circle @click="editRow(row)"></el-button>
           <el-button size="mini" type="success" icon="el-icon-check" circle></el-button>
           <el-button size="mini" type="info" icon="el-icon-message" circle></el-button>
         </el-row>
       </template>
-      <template v-slot:edit-field="{ row,rowIndex,column,columnIndex }">
+      <template v-slot:edit-field="{ row }">
         <span>{{row}}</span>
       </template>
     </vxe-grid>
